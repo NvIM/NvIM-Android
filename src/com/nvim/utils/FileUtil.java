@@ -15,9 +15,10 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import com.mogujie.tt.cache.biz.CacheHub;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.entity.MessageInfo;
+
+import com.nvim.cache.biz.CacheHub;
+import com.nvim.config.SysConstant;
+import com.nvim.entity.MessageInfo;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

@@ -1,6 +1,6 @@
 package com.nvim.utils;
 
-import com.mogujie.tt.imlib.proto.ContactEntity;
+import com.nvim.proto.ContactEntity;
 
 public class ContactUtils {
 

@@ -20,11 +20,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
-import com.mogujie.tt.R;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.ui.tools.PhotoHandler;
-
 public class CommonUtil {
     /**
      * @Description 判断是否是顶部activity
