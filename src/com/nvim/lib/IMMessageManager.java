@@ -7,36 +7,34 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.nvim.config.HandlerConstant;
+import com.nvim.config.ProtocolConstant;
+import com.nvim.config.SysConstant;
+import com.nvim.entity.MessageInfo;
+import com.nvim.lib.db.IMDbManager;
+import com.nvim.lib.network.SocketThread;
+import com.nvim.lib.utils.IMUIHelper;
+import com.nvim.log.Logger;
+import com.nvim.packet.base.DataBuffer;
+import com.nvim.proto.AckGroupUnreadMsgPacket;
+import com.nvim.proto.AckUnreadMsgPacket;
+import com.nvim.proto.ContactEntity;
+import com.nvim.proto.GroupEntity;
+import com.nvim.proto.GroupUnreadMsgPacket;
+import com.nvim.proto.MessageEntity;
+import com.nvim.proto.MessageNotifyPacket;
+import com.nvim.proto.MessagePacket;
+import com.nvim.task.TaskManager;
+import com.nvim.task.biz.UploadImageTask;
+import com.nvim.ui.utils.IMServiceHelper;
+import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
+
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-
-import com.mogujie.tt.config.HandlerConstant;
-import com.mogujie.tt.config.ProtocolConstant;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.entity.MessageInfo;
-import com.mogujie.tt.imlib.db.IMDbManager;
-import com.mogujie.tt.imlib.network.SocketThread;
-import com.mogujie.tt.imlib.proto.AckGroupUnreadMsgPacket;
-import com.mogujie.tt.imlib.proto.AckUnreadMsgPacket;
-import com.mogujie.tt.imlib.proto.ContactEntity;
-import com.mogujie.tt.imlib.proto.GroupEntity;
-import com.mogujie.tt.imlib.proto.GroupUnreadMsgPacket;
-import com.mogujie.tt.imlib.proto.MessageEntity;
-import com.mogujie.tt.imlib.proto.MessageNotifyPacket;
-import com.mogujie.tt.imlib.proto.MessagePacket;
-import com.mogujie.tt.imlib.proto.UnreadMsgPacket;
-import com.mogujie.tt.imlib.proto.UnreadMsgPacket.PacketResponse;
-import com.mogujie.tt.imlib.utils.IMContactHelper;
-import com.mogujie.tt.imlib.utils.IMUIHelper;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.packet.base.DataBuffer;
-import com.mogujie.tt.task.TaskManager;
-import com.mogujie.tt.task.biz.UploadImageTask;
-import com.mogujie.tt.ui.utils.IMServiceHelper;
-import com.mogujie.tt.ui.utils.IMServiceHelper.OnIMServiceListner;
 
 public class IMMessageManager extends IMManager implements OnIMServiceListner {
 	private static IMMessageManager inst;
@@ -60,16 +58,16 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 		@Override
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-				case HandlerConstant.HANDLER_IMAGE_UPLOAD_FAILD :
-					IMMessageManager.instance().onUploadImageFaild(msg.obj);
-					break;
+			case HandlerConstant.HANDLER_IMAGE_UPLOAD_FAILD:
+				IMMessageManager.instance().onUploadImageFaild(msg.obj);
+				break;
 
-				case HandlerConstant.HANDLER_IMAGE_UPLOAD_SUCESS :
-					IMMessageManager.instance().onImageUploadFinish(msg.obj);
-					break;
+			case HandlerConstant.HANDLER_IMAGE_UPLOAD_SUCESS:
+				IMMessageManager.instance().onImageUploadFinish(msg.obj);
+				break;
 
-				default :
-					break;
+			default:
+				break;
 			}
 
 			super.handleMessage(msg);
@@ -119,8 +117,7 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 
 		msgInfo.setMsgLoadState(SysConstant.MESSAGE_STATE_LOADDING);
 
-		msgInfo.setMsgContent(SysConstant.MESSAGE_IMAGE_LINK_START
-				+ realImageURL + SysConstant.MESSAGE_IMAGE_LINK_END);
+		msgInfo.setMsgContent(SysConstant.MESSAGE_IMAGE_LINK_START + realImageURL + SysConstant.MESSAGE_IMAGE_LINK_END);
 
 		broadcastMsgStatus(msgInfo, SysConstant.MESSAGE_STATE_LOADDING);
 
@@ -153,20 +150,20 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 		imServiceHelper.registerActions(ctx, actions, IMServiceHelper.INTENT_NO_PRIORITY, this);
 	}
 
-	public void sendText(String sessionId, String text, int sessionType,
-			MessageInfo msgInfo) {
+	@SuppressLint("NewApi")
+	public void sendText(String sessionId, String text, int sessionType, MessageInfo msgInfo) {
 		logger.i("chat#text#sendText -> peerId:%s, text:%s", sessionId, text);
 
 		fillMessageCommonInfo(msgInfo, sessionId, getTextMsgType(sessionType), sessionType);
 
+		// TODO XXX
 		msgInfo.msgData = text.getBytes(Charset.forName("utf8"));
 		msgInfo.msgLen = msgInfo.msgData.length;
 
 		sendMessage(msgInfo);
 	}
 
-	public void sendVoice(String sessionId, byte[] voiceData, int sessionType,
-			MessageInfo msgInfo) {
+	public void sendVoice(String sessionId, byte[] voiceData, int sessionType, MessageInfo msgInfo) {
 		logger.i("chat#audio#sendVoice -> sessionId:%s, voidDataLen:%d", sessionId, voiceData.length);
 
 		fillMessageCommonInfo(msgInfo, sessionId, getAudioMsgType(sessionType), sessionType);
@@ -178,8 +175,7 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 		sendMessage(msgInfo);
 	}
 
-	public void sendImages(String sessionId, int sessionType,
-			List<MessageInfo> msgList) {
+	public void sendImages(String sessionId, int sessionType, List<MessageInfo> msgList) {
 
 		for (MessageInfo msg : msgList) {
 			logger.d("chat#pic#sendImage sessionId:%s, msg:%s", sessionId, msg);
@@ -190,12 +186,12 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 		}
 
 		// todo eric get rid of TaskManager
-		UploadImageTask upTask = new UploadImageTask(mainHandler, sessionType, SysConstant.UPLOAD_IMAGE_URL_PREFIX, "", msgList);
+		UploadImageTask upTask = new UploadImageTask(mainHandler, sessionType, SysConstant.UPLOAD_IMAGE_URL_PREFIX, "",
+				msgList);
 		TaskManager.getInstance().trigger(upTask);
 	}
 
-	private void fillMessageCommonInfo(MessageInfo msg, String sessionId,
-			byte msgType, int sessionType) {
+	private void fillMessageCommonInfo(MessageInfo msg, String sessionId, byte msgType, int sessionType) {
 		msg.seqNo = seqNo++;
 		msg.talkerId = IMLoginManager.instance().getLoginId();
 		msg.fromId = msg.talkerId;
@@ -219,8 +215,7 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 	private static byte getTextMsgType(int sessionType) {
 		byte msgType = ProtocolConstant.MSG_TYPE_P2P_TEXT;
 
-		if (sessionType == IMSession.SESSION_GROUP
-				|| sessionType == IMSession.SESSION_TEMP_GROUP) {
+		if (sessionType == IMSession.SESSION_GROUP || sessionType == IMSession.SESSION_TEMP_GROUP) {
 			msgType = ProtocolConstant.MSG_TYPE_GROUP_TEXT;
 		}
 
@@ -230,8 +225,7 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 	private static byte getAudioMsgType(int sessionType) {
 		byte msgType = ProtocolConstant.MSG_TYPE_P2P_AUDIO;
 
-		if (sessionType == IMSession.SESSION_GROUP
-				|| sessionType == IMSession.SESSION_TEMP_GROUP) {
+		if (sessionType == IMSession.SESSION_GROUP || sessionType == IMSession.SESSION_TEMP_GROUP) {
 			msgType = ProtocolConstant.MSG_TYPE_GROUP_AUDIO;
 		}
 
@@ -287,8 +281,7 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 		channel.sendPacket(new MessagePacket(msgInfo));
 	}
 
-	private boolean broadcastMessage(String sessionId, int sessionType,
-			String action, boolean ordered) {
+	private boolean broadcastMessage(String sessionId, int sessionType, String action, boolean ordered) {
 		// todo eric use local broadcast
 		if (ctx != null) {
 			Intent intent = new Intent(action);
@@ -391,7 +384,7 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 		}
 
 		logger.d("chat#recvMsg:%s", msgInfo);
-		
+
 		ackMsg(msgInfo);
 
 		Object msgSessionEntity = findMsgSessionEntity(msgInfo);
@@ -443,14 +436,15 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 		List<MessageInfo> unreadMsgList = filterOutReadMsgs(allMsgList);
 		if (unreadMsgList.isEmpty()) {
 			logger.d("repeat#all messages have been already read");
-			
-			//ack them
-			//However, if we didn't ack them, next time if there's new message come along with them
-			//we can ack them all together
-			//todo eric
+
+			// ack them
+			// However, if we didn't ack them, next time if there's new message
+			// come along with them
+			// we can ack them all together
+			// todo eric
 			return;
 		}
-		
+
 		String sessionId = "";
 		int sessionType = -1;
 
@@ -458,7 +452,7 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 			if (sessionId.isEmpty()) {
 				sessionId = msgInfo.sessionId;
 
-				//todo eric sessionType is still unclear here
+				// todo eric sessionType is still unclear here
 				sessionType = msgInfo.sessionType;
 			}
 
@@ -479,12 +473,13 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 		}
 
 		if (broadcastMessage(sessionId, sessionType, IMActions.ACTION_MSG_RECV, true)) {
-//			logger.d("chat#broadcast receiving new msg, callstack:%s", Log.getStackTraceString(new Throwable()));
+			// logger.d("chat#broadcast receiving new msg, callstack:%s",
+			// Log.getStackTraceString(new Throwable()));
 			logger.d("chat#broadcast receiving new msg");
 		}
 	}
 
-	List<MessageInfo> filterOutReadMsgs(List<MessageInfo> msgList) {		
+	List<MessageInfo> filterOutReadMsgs(List<MessageInfo> msgList) {
 		MessageInfo lastMsg = msgList.get(msgList.size() - 1);
 		logger.d("repeat#filterAlreadyReadMsg -> lastMsg:%s", lastMsg);
 
@@ -495,7 +490,7 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 			return msgList;
 		}
 
-		//peek 
+		// peek
 		MessageInfo firstMsg = msgList.get(0);
 		if (time < firstMsg.getCreated()) {
 			logger.d("repeat#all msgs are unread");
@@ -581,13 +576,14 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 
 		for (MessageInfo msgInfo : msgList) {
 			msgInfo.generateSessionType(sessionType);
-//			IMDbManager.instance(ctx).saveMsg(msgInfo, false);
+			// IMDbManager.instance(ctx).saveMsg(msgInfo, false);
 		}
-		
+
 		IMDbManager.instance(ctx).saveMsgs(msgList, false);
 
-		//if crash happens before this line, we only have a few repeat messages
-		// repeat is better than lost, this is the central idea for the future design and bug fix
+		// if crash happens before this line, we only have a few repeat messages
+		// repeat is better than lost, this is the central idea for the future
+		// design and bug fix
 		IMDbManager.instance(ctx).updateSessionLastMsg(msgList.get(msgList.size() - 1));
 
 		ackUnreadMsgs(sessionId, sessionType);
@@ -642,8 +638,7 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 	}
 
 	@Override
-	public void onAction(String action, Intent intent,
-			BroadcastReceiver broadcastReceiver) {
+	public void onAction(String action, Intent intent, BroadcastReceiver broadcastReceiver) {
 		// TODO Auto-generated method stub
 		if (action.equals(IMActions.ACTION_GROUP_READY)) {
 			logger.d("chat#on action group ready");

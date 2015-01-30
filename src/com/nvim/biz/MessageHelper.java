@@ -5,29 +5,28 @@ import java.net.URLDecoder;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import com.nvim.cache.BlockTargetCache;
+import com.nvim.cache.biz.CacheHub;
+import com.nvim.config.HandlerConstant;
+import com.nvim.config.SysConstant;
+import com.nvim.entity.MessageInfo;
+import com.nvim.entity.User;
+import com.nvim.lib.IMMessageManager;
+import com.nvim.log.Logger;
+import com.nvim.packet.action.ActionCallback;
+import com.nvim.packet.base.Packet;
+import com.nvim.task.TaskCallback;
+import com.nvim.task.TaskManager;
+import com.nvim.task.biz.CheckUserBlockTask;
+import com.nvim.ui.utils.IMServiceHelper;
+import com.nvim.utils.CommonUtil;
+import com.nvim.utils.FileUtil;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-
-import com.mogujie.tt.cache.BlockTargetCache;
-import com.mogujie.tt.cache.biz.CacheHub;
-import com.mogujie.tt.config.HandlerConstant;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.entity.MessageInfo;
-import com.mogujie.tt.entity.User;
-import com.mogujie.tt.imlib.IMMessageManager;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.packet.action.ActionCallback;
-import com.mogujie.tt.packet.base.Packet;
-import com.mogujie.tt.task.TaskCallback;
-import com.mogujie.tt.task.TaskManager;
-import com.mogujie.tt.task.biz.CheckUserBlockTask;
-import com.mogujie.tt.ui.activity.MessageActivity;
-import com.mogujie.tt.ui.utils.IMServiceHelper;
-import com.mogujie.tt.utils.CommonUtil;
-import com.mogujie.tt.utils.FileUtil;
 
 /**
  * @Description 消息界面的公用业务逻辑处理
@@ -93,7 +92,7 @@ public class MessageHelper {
 	 */
 	public static void onGetUserInfo(Object obj, Handler uiHandler,
 			Context context) {
-		MessageActivity.requestingUserInfo = false;
+//		MessageActivity.requestingUserInfo = false;
 		if (obj == null) {
 			return;
 		}
@@ -142,7 +141,7 @@ public class MessageHelper {
 			}
 
 			logger.d("chat#start addItem");
-			MessageActivity.addItem(messageInfo);
+//			MessageActivity.addItem(messageInfo);
 		}
 	}
 
@@ -241,7 +240,7 @@ public class MessageHelper {
 		String msgId = intent.getStringExtra(SysConstant.MSG_ID_KEY);
 		logger.d("chat#onReceiveMsgACK2, msgId:%s", msgId);
 
-		MessageActivity.updateMessageState(msgId, SysConstant.MESSAGE_STATE_FINISH_SUCCESSED);
+//		MessageActivity.updateMessageState(msgId, SysConstant.MESSAGE_STATE_FINISH_SUCCESSED);
 
 //		MessageInfo messageInfo = msg.msgInfo;
 //		if (null == messageInfo)
@@ -291,9 +290,9 @@ public class MessageHelper {
 	 * @param msgHandler
 	 */
 	public static void requestUserInfo(String userId, final Handler msgHandler) {
-		if (MessageActivity.requestingUserInfo)
-			return;
-		MessageActivity.requestingUserInfo = true;
+//		if (MessageActivity.requestingUserInfo)
+//			return;
+//		MessageActivity.requestingUserInfo = true;
 		Queue<String> userList = new LinkedList<String>();
 		userList.add(userId);
 		// //sendTaskForUserInfo(userList, new ActionCallback() {

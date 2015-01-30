@@ -19,21 +19,19 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
-import com.mogujie.tt.cache.biz.CacheHub;
-import com.mogujie.tt.config.ProtocolConstant;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.entity.User;
-import com.mogujie.tt.imlib.common.ErrorCode;
-import com.mogujie.tt.imlib.db.IMDbManager;
-import com.mogujie.tt.imlib.network.LoginServerHandler;
-import com.mogujie.tt.imlib.network.MsgServerHandler;
-import com.mogujie.tt.imlib.network.SocketThread;
-import com.mogujie.tt.imlib.proto.LoginPacket;
-import com.mogujie.tt.imlib.proto.MsgServerPacket;
-import com.mogujie.tt.imlib.proto.MsgServerPacket.PacketRequest.Entity;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.packet.base.DataBuffer;
-import com.mogujie.tt.ui.utils.Md5Helper;
+import com.nvim.config.ProtocolConstant;
+import com.nvim.config.SysConstant;
+import com.nvim.entity.User;
+import com.nvim.lib.common.ErrorCode;
+import com.nvim.lib.db.IMDbManager;
+import com.nvim.lib.network.LoginServerHandler;
+import com.nvim.lib.network.MsgServerHandler;
+import com.nvim.lib.network.SocketThread;
+import com.nvim.log.Logger;
+import com.nvim.packet.base.DataBuffer;
+import com.nvim.proto.LoginPacket;
+import com.nvim.proto.MsgServerPacket;
+import com.nvim.ui.utils.Md5Helper;
 
 public class IMLoginManager extends IMManager {
 	private static IMLoginManager inst;
@@ -307,10 +305,10 @@ public class IMLoginManager extends IMManager {
 		currentStatus = STATUS_REQ_MSG_SERVER_ADDRS;
 
 		if (loginServerThread != null) {
-			Entity entity = new Entity();
-			entity.userType = 0;
-			loginServerThread.sendPacket(new MsgServerPacket(entity));
-			logger.d("login#send packet ok");
+//			Entity entity = new Entity();
+//			entity.userType = 0;
+//			loginServerThread.sendPacket(new MsgServerPacket(entity));
+//			logger.d("login#send packet ok");
 		}
 	}
 
@@ -438,53 +436,53 @@ public class IMLoginManager extends IMManager {
 		currentStatus = STATUS_LOGINING_MSG_SERVER;
 
 		if (msgServerThread != null) {
-			com.mogujie.tt.imlib.proto.LoginPacket.PacketRequest.Entity entity = new com.mogujie.tt.imlib.proto.LoginPacket.PacketRequest.Entity();
+			com.nvim.proto.LoginPacket.PacketRequest.Entity entity = new com.nvim.proto.LoginPacket.PacketRequest.Entity();
 			entity.name = loginUserName;
 			entity.pass = loginPwd;
 			entity.onlineStatus = ProtocolConstant.ON_LINE;
 			entity.clientType = ProtocolConstant.CLIENT_TYPE;
 			entity.clientVersion = ProtocolConstant.CLIENT_VERSION;
-			msgServerThread.sendPacket(new LoginPacket(entity));
+//			msgServerThread.sendPacket(new LoginPacket(entity));
 		}
 	}
 
 	public void onRepMsgServerLogin(DataBuffer buffer) {
 		logger.i("login#onRepMsgServerLogin");
 
-		LoginPacket packet = new LoginPacket();
-		packet.decode(buffer);
+//		LoginPacket packet = new LoginPacket();
+//		packet.decode(buffer);
+//
+//		LoginPacket.PacketResponse resp = (LoginPacket.PacketResponse) packet.getResponse();
 
-		LoginPacket.PacketResponse resp = (LoginPacket.PacketResponse) packet.getResponse();
+//		if (resp == null) {
+//			logger.e("login#decode LoginResponse failed");
+//			onLoginFailed(ErrorCode.E_LOGIN_MSG_SERVER_FAILED);
+//			return;
+//		}
 
-		if (resp == null) {
-			logger.e("login#decode LoginResponse failed");
-			onLoginFailed(ErrorCode.E_LOGIN_MSG_SERVER_FAILED);
-			return;
-		}
-
-		int loginResult = resp.entity.result;
-		this.msgServerErrorCode = loginResult;
-
-		logger.d("login#loginResult:%d", loginResult);
-
-		if (loginResult == 0) {
-			loginUser = resp.getUser();
-			loginUser.setUserId(resp.entity.userId);
-			setLoginId(resp.entity.userId);
-
-			onLoginOk();
-		} else {
-			logger.e("login#login msg server failed, result:%d", loginResult);
-
-			// todo eric right now, no detail failed reason
-			onLoginFailed(ErrorCode.E_MSG_SERVER_ERROR_CODE);
-
-			if (loginResult == LOGIN_ERROR_TOKEN_EXPIRED) {
-				logger.e("login#error:token expired");
-
-				reloginFromStart();
-			}
-		}
+		// int loginResult = resp.entity.result;
+		// this.msgServerErrorCode = loginResult;
+		//
+		// logger.d("login#loginResult:%d", loginResult);
+		//
+		// if (loginResult == 0) {
+		// loginUser = resp.getUser();
+		// loginUser.setUserId(resp.entity.userId);
+		// setLoginId(resp.entity.userId);
+		//
+		// onLoginOk();
+		// } else {
+		// logger.e("login#login msg server failed, result:%d", loginResult);
+		//
+		// // todo eric right now, no detail failed reason
+		// onLoginFailed(ErrorCode.E_MSG_SERVER_ERROR_CODE);
+		//
+		// if (loginResult == LOGIN_ERROR_TOKEN_EXPIRED) {
+		// logger.e("login#error:token expired");
+		//
+		// reloginFromStart();
+		// }
+		// }
 	}
 
 	public SocketThread getMsgServerChannel() {

@@ -1,7 +1,7 @@
 package com.nvim.config;
 
-import com.mogujie.tt.packet.base.Header;
 import com.nvim.log.Logger;
+import com.nvim.packet.base.Header;
 
 public class ProtocolConstant {
 

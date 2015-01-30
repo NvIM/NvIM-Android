@@ -3,8 +3,8 @@ package com.nvim.proto;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mogujie.tt.imlib.utils.SearchElement;
-import com.mogujie.tt.utils.pinyin.PinYin.PinYinElement;
+import com.nvim.lib.utils.SearchElement;
+import com.nvim.pinyin.PinYin.PinYinElement;
 
 public class GroupEntity {
 	public String id;

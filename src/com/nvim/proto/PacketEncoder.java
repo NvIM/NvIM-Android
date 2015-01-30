@@ -6,9 +6,9 @@ import org.jboss.netty.channel.Channels;
 import org.jboss.netty.channel.MessageEvent;
 import org.jboss.netty.channel.SimpleChannelDownstreamHandler;
 
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.packet.base.DataBuffer;
-import com.mogujie.tt.packet.base.Packet;
+import com.nvim.log.Logger;
+import com.nvim.packet.base.DataBuffer;
+import com.nvim.packet.base.Packet;
 
 /**
  * @Description: 数据编码器，把要发送的数据按照一定格式拼接成二进制的流

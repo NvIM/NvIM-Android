@@ -1,13 +1,13 @@
 
 package com.nvim.proto;
 
-import com.mogujie.tt.config.ProtocolConstant;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.packet.base.DataBuffer;
-import com.mogujie.tt.packet.base.Header;
-import com.mogujie.tt.packet.base.Packet;
-import com.mogujie.tt.utils.SequenceNumberMaker;
+import com.nvim.config.ProtocolConstant;
+import com.nvim.config.SysConstant;
+import com.nvim.log.Logger;
+import com.nvim.packet.base.DataBuffer;
+import com.nvim.packet.base.Header;
+import com.nvim.packet.base.Packet;
+import com.nvim.utils.SequenceNumberMaker;
 
 public class HeartBeatPacket extends Packet {
 

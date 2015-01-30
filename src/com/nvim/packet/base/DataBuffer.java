@@ -5,8 +5,8 @@ import java.nio.charset.Charset;
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.buffer.ChannelBuffers;
 
-import com.mogujie.tt.biz.MessageHelper;
-import com.mogujie.tt.log.Logger;
+import android.annotation.SuppressLint;
+import com.nvim.log.Logger;
 
 /**
  * 数据缓冲区对象(ChannelBuffer)
@@ -109,6 +109,7 @@ public class DataBuffer {
 	 * 
 	 * @return 格式：前导length表示字符串的byte数 length(4字节)string(length字节)
 	 */
+	@SuppressLint("NewApi")
 	public String readString() {
 		int length = readInt();
 //		logger.d("debug#length:%d", length);

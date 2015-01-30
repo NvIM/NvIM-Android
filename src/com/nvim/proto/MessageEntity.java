@@ -5,17 +5,16 @@ import java.util.UUID;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.mogujie.tt.config.ProtocolConstant;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.entity.MessageInfo;
-import com.mogujie.tt.imlib.IMLoginManager;
-import com.mogujie.tt.log.Logger;
+import com.nvim.config.ProtocolConstant;
+import com.nvim.config.SysConstant;
+import com.nvim.entity.MessageInfo;
+import com.nvim.log.Logger;
 
 public class MessageEntity {
 	public int seqNo;
 	public String fromId;
 	public String toId;
-	public String talkerId;//the guy which sends the message
+	public String talkerId;// the guy which sends the message
 	public int createTime;
 	public byte type;
 	public int msgLen;
@@ -28,10 +27,10 @@ public class MessageEntity {
 	public String sessionId;
 	public int sessionType = -1;
 	public boolean multiLoginSelfMsg = false;
-	
-//	public boolean isMy() {
-//		return fromId.equals(IMLoginManager.instance().getLoginId());
-//	}
+
+	// public boolean isMy() {
+	// return fromId.equals(IMLoginManager.instance().getLoginId());
+	// }
 
 	public void copy(MessageEntity anotherEntity) {
 		seqNo = anotherEntity.seqNo;
@@ -101,7 +100,7 @@ public class MessageEntity {
 	}
 
 	public void generateMsgIdIfEmpty(/* boolean sending */) {
-		if (msgId == null || msgId.isEmpty()) {
+		if (msgId == null || (msgId.length() == 0)) {
 			msgId = UUID.randomUUID().toString();
 		}
 	}
@@ -120,8 +119,8 @@ public class MessageEntity {
 
 	public boolean isGroupMsg() {
 		// todo eric consider flag &
-		if (type == ProtocolConstant.MSG_TYPE_GROUP_AUDIO
-				|| type == ProtocolConstant.MSG_TYPE_GROUP_TEXT || type == ProtocolConstant.MSG_TYPE_GROUP_TEXT_FOR_HISTORY_REASON_COMPATIBILITY) {
+		if (type == ProtocolConstant.MSG_TYPE_GROUP_AUDIO || type == ProtocolConstant.MSG_TYPE_GROUP_TEXT
+				|| type == ProtocolConstant.MSG_TYPE_GROUP_TEXT_FOR_HISTORY_REASON_COMPATIBILITY) {
 			return true;
 		}
 
@@ -129,8 +128,7 @@ public class MessageEntity {
 	}
 
 	public boolean isP2PMsg() {
-		if (type == ProtocolConstant.MSG_TYPE_P2P_AUDIO
-				|| type == ProtocolConstant.MSG_TYPE_P2P_TEXT) {
+		if (type == ProtocolConstant.MSG_TYPE_P2P_AUDIO || type == ProtocolConstant.MSG_TYPE_P2P_TEXT) {
 			return true;
 		}
 
@@ -142,22 +140,23 @@ public class MessageEntity {
 		// todo eric make createtime readble
 		// todo eric if the content is text, should i logging here
 		// todo eric fix all warnings, like locale param in String.format
-		return String.format("seqNo:%d,  fromId:%s, toId:%s, createTime:%d, msgType:%d, msgLen:%d, msgData:%s, attach:%s, msgId:%s", seqNo, fromId, toId, createTime, type, msgLen, getMsgDataDescription(), (attach == null)
-				? ""
-				: attach, (msgId == null) ? "" : msgId);
+		return String.format(
+				"seqNo:%d,  fromId:%s, toId:%s, createTime:%d, msgType:%d, msgLen:%d, msgData:%s, attach:%s, msgId:%s",
+				seqNo, fromId, toId, createTime, type, msgLen, getMsgDataDescription(), (attach == null) ? "" : attach,
+				(msgId == null) ? "" : msgId);
 	}
 
 	public String getSessionId(boolean sending) {
-		if (type == ProtocolConstant.MSG_TYPE_P2P_TEXT
-				|| type == ProtocolConstant.MSG_TYPE_P2P_AUDIO) {
+		if (type == ProtocolConstant.MSG_TYPE_P2P_TEXT || type == ProtocolConstant.MSG_TYPE_P2P_AUDIO) {
 			if (multiLoginSelfMsg) {
 				return toId;
 			}
-			
+
 			return sending ? toId : fromId;
 		}
 
-		if (type == ProtocolConstant.MSG_TYPE_GROUP_TEXT || type == ProtocolConstant.MSG_TYPE_GROUP_TEXT_FOR_HISTORY_REASON_COMPATIBILITY
+		if (type == ProtocolConstant.MSG_TYPE_GROUP_TEXT
+				|| type == ProtocolConstant.MSG_TYPE_GROUP_TEXT_FOR_HISTORY_REASON_COMPATIBILITY
 				|| type == ProtocolConstant.MSG_TYPE_GROUP_AUDIO) {
 			return toId;
 		}
@@ -198,7 +197,7 @@ public class MessageEntity {
 			if (url == null) {
 				url = "";
 			}
-			
+
 			logger.d("pic#save pic to db, path:%s, url:%s", savePath, url);
 
 			jo.put("url", url);
@@ -211,11 +210,12 @@ public class MessageEntity {
 
 		return "";
 	}
+
 	public static class AudioInfo {
 		private String path;
 		private int length;
 		private int readStatus;
-		
+
 		public int getReadStatus() {
 			return readStatus;
 		}
@@ -255,7 +255,7 @@ public class MessageEntity {
 			int readStatus = SysConstant.MESSAGE_UNREAD;
 			try {
 				JSONObject jo = new JSONObject(info);
-				
+
 				path = jo.getString("path");
 				length = jo.getInt("length");
 				readStatus = jo.getInt("readStatus");
@@ -264,7 +264,7 @@ public class MessageEntity {
 				// TODO Auto-generated catch block
 				logger.w("audio#createAudioInfo failed");
 			}
-			
+
 			logger.d("audio#read audio info from db -> path:%s, length:%d, readStatus:%d", path, length, readStatus);
 			return new AudioInfo(path, length, readStatus);
 		}
@@ -303,7 +303,7 @@ public class MessageEntity {
 
 			try {
 				JSONObject jo = new JSONObject(info);
-				
+
 				url = (String) jo.get("url");
 				path = (String) jo.get("path");
 			} catch (JSONException e1) {
@@ -314,7 +314,7 @@ public class MessageEntity {
 		}
 	}
 
-		// todo eric
+	// todo eric
 	public MessageInfo msgInfo;
 
 }

@@ -3,10 +3,10 @@ package com.nvim.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.mogujie.tt.cache.biz.CacheHub;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.imlib.proto.MessageEntity;
-import com.mogujie.tt.log.Logger;
+import com.nvim.cache.biz.CacheHub;
+import com.nvim.config.SysConstant;
+import com.nvim.log.Logger;
+import com.nvim.proto.MessageEntity;
 
 /**
  * @Description 消息列表中的消息实体

@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.nvim.config.SysConstant;
+import com.nvim.entity.MessageInfo;
+import com.nvim.lib.db.IMDbManager;
+import com.nvim.log.Logger;
+
 import android.content.Intent;
 import android.os.Handler;
 import android.os.SystemClock;
-
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.entity.MessageInfo;
-import com.mogujie.tt.imlib.db.IMDbManager;
-import com.mogujie.tt.log.Logger;
 
 public class IMUnAckMsgManager extends IMManager {
 	private static IMUnAckMsgManager inst;
