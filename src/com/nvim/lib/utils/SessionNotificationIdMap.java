@@ -3,7 +3,7 @@ package com.nvim.lib.utils;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.mogujie.tt.log.Logger;
+import com.nvim.log.Logger;
 
 public class SessionNotificationIdMap {
 	private Logger logger = Logger.getLogger(SessionNotificationIdMap.class);

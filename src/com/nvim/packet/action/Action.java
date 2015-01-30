@@ -1,7 +1,7 @@
 
 package com.nvim.packet.action;
 
-import com.mogujie.tt.packet.base.Packet;
+import com.nvim.packet.base.Packet;
 
 /**
  * Action的基类，子类可以各自需要添加成员函数与变量

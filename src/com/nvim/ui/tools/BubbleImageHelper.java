@@ -1,10 +1,9 @@
 
 package com.nvim.ui.tools;
 
-import com.mogujie.tt.utils.CommonUtil;
-
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -12,7 +11,8 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
-import android.graphics.Bitmap.Config;
+
+import com.nvim.utils.CommonUtil;
 
 public class BubbleImageHelper {
     private Context context = null;

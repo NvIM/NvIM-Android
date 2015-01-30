@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+import android.R;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,24 +24,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 
-import com.mogujie.tt.R;
-import com.mogujie.tt.adapter.GroupManagerAdapter;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.entity.MessageInfo;
-import com.mogujie.tt.imlib.IMActions;
-import com.mogujie.tt.imlib.IMContactManager;
-import com.mogujie.tt.imlib.IMGroupManager;
-import com.mogujie.tt.imlib.IMSession;
-import com.mogujie.tt.imlib.proto.ContactEntity;
-import com.mogujie.tt.imlib.proto.DepartmentEntity;
-import com.mogujie.tt.imlib.proto.GroupEntity;
-import com.mogujie.tt.imlib.service.IMService;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.ui.activity.MessageActivity;
-import com.mogujie.tt.ui.activity.UserInfoActivity;
-import com.mogujie.tt.utils.pinyin.PinYin.PinYinElement;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nvim.config.SysConstant;
+import com.nvim.entity.MessageInfo;
+import com.nvim.lib.IMActions;
+import com.nvim.lib.IMContactManager;
+import com.nvim.lib.IMGroupManager;
+import com.nvim.lib.IMSession;
+import com.nvim.log.Logger;
+import com.nvim.pinyin.PinYin.PinYinElement;
+import com.nvim.proto.ContactEntity;
+import com.nvim.proto.DepartmentEntity;
+import com.nvim.proto.GroupEntity;
 
 public class IMUIHelper {
 	public static String getSessionKey(String sessionId, int sessionType) {

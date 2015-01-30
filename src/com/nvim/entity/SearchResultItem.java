@@ -1,9 +1,10 @@
 
 package com.nvim.entity;
 
+import android.R;
 import android.text.TextUtils;
-import com.mogujie.tt.R;
-import com.mogujie.tt.config.SysConstant;
+
+import com.nvim.config.SysConstant;
 
 public class SearchResultItem {
     protected String avatar; // 联系人或者群头像

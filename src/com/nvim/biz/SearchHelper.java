@@ -4,8 +4,8 @@ package com.nvim.biz;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.entity.SearchResultItem;
+import com.nvim.config.SysConstant;
+import com.nvim.entity.SearchResultItem;
 
 /**
  * 查找功能辅助类

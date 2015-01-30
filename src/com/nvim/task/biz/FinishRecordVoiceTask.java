@@ -1,8 +1,8 @@
 
 package com.nvim.task.biz;
 
-import com.mogujie.tt.config.TaskConstant;
-import com.mogujie.tt.task.MAsyncTask;
+import com.nvim.config.TaskConstant;
+import com.nvim.task.MAsyncTask;
 
 public class FinishRecordVoiceTask extends MAsyncTask {
 

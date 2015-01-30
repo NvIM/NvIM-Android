@@ -3,8 +3,8 @@ package com.nvim.lib.utils;
 import android.view.View;
 import android.widget.CheckBox;
 
-import com.mogujie.tt.imlib.IMConfigurationManager;
-import com.mogujie.tt.log.Logger;
+import com.nvim.lib.IMConfigurationManager;
+import com.nvim.log.Logger;
 
 public class CheckboxConfigUtils {
 	private IMConfigurationManager configMgr;

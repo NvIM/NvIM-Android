@@ -1,7 +1,7 @@
 package com.nvim.lib;
 
-import com.mogujie.tt.imlib.db.IMDbManager;
-import com.mogujie.tt.log.Logger;
+import com.nvim.lib.db.IMDbManager;
+import com.nvim.log.Logger;
 
 public class IMConfigurationManager extends IMManager {
 	private static IMConfigurationManager inst;

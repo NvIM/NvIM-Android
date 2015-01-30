@@ -10,13 +10,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.PowerManager;
 
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.imlib.common.ErrorCode;
-import com.mogujie.tt.imlib.network.SocketThread;
-import com.mogujie.tt.imlib.proto.HeartBeatPacket;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.ui.utils.IMServiceHelper;
-import com.mogujie.tt.ui.utils.IMServiceHelper.OnIMServiceListner;
+import com.nvim.config.SysConstant;
+import com.nvim.lib.common.ErrorCode;
+import com.nvim.lib.network.SocketThread;
+import com.nvim.log.Logger;
+import com.nvim.proto.HeartBeatPacket;
+import com.nvim.ui.utils.IMServiceHelper;
+import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
 
 public class IMHeartBeatManager extends IMManager implements OnIMServiceListner {
 	// todo eric this is not a good way to keep heartbeat

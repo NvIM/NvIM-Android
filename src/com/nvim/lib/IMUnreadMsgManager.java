@@ -7,8 +7,8 @@ import java.util.Map;
 
 import android.text.TextUtils;
 
-import com.mogujie.tt.entity.MessageInfo;
-import com.mogujie.tt.log.Logger;
+import com.nvim.entity.MessageInfo;
+import com.nvim.log.Logger;
 
 public class IMUnreadMsgManager extends IMManager {
 	private static IMUnreadMsgManager inst;

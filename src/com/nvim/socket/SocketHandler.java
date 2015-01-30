@@ -2,35 +2,20 @@
 package com.nvim.socket;
 
 import org.jboss.netty.buffer.ChannelBuffer;
-
 import org.jboss.netty.channel.ChannelHandlerContext;
-
 import org.jboss.netty.channel.ChannelStateEvent;
-
 import org.jboss.netty.channel.ExceptionEvent;
-
 import org.jboss.netty.channel.MessageEvent;
-
 import org.jboss.netty.channel.SimpleChannelHandler;
 
 import android.os.Handler;
-
 import android.os.Message;
 
-
-
-
-
-
-
-
-import com.mogujie.tt.config.HandlerConstant;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.conn.ConnectionStore;
+import com.nvim.config.HandlerConstant;
+import com.nvim.config.SysConstant;
+import com.nvim.log.Logger;
+import com.nvim.packet.base.DataBuffer;
 //import com.mogujie.tt.conn.ReconnectManager;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.packet.MessageDispatchCenter;
-import com.mogujie.tt.packet.base.DataBuffer;
 
 
 public class SocketHandler extends SimpleChannelHandler {

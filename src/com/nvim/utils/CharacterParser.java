@@ -1,6 +1,6 @@
 package com.nvim.utils;
 
-import com.mogujie.tt.log.Logger;
+import com.nvim.log.Logger;
 
 /**
  * 

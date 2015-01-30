@@ -8,24 +8,24 @@ import java.util.concurrent.ConcurrentHashMap;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.entity.RecentInfo;
-import com.mogujie.tt.imlib.common.ErrorCode;
-import com.mogujie.tt.imlib.network.SocketThread;
-import com.mogujie.tt.imlib.proto.AllContactsPacket;
-import com.mogujie.tt.imlib.proto.ContactEntity;
-import com.mogujie.tt.imlib.proto.DepartmentEntity;
-import com.mogujie.tt.imlib.proto.DepartmentPacket;
-import com.mogujie.tt.imlib.proto.RecentContactsPacket;
-import com.mogujie.tt.imlib.proto.UnreadMsgContactListPacket;
-import com.mogujie.tt.imlib.proto.UnreadMsgPacket;
-import com.mogujie.tt.imlib.utils.IMContactHelper;
-import com.mogujie.tt.imlib.utils.IMUIHelper;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.packet.base.DataBuffer;
-import com.mogujie.tt.ui.utils.IMServiceHelper;
-import com.mogujie.tt.ui.utils.IMServiceHelper.OnIMServiceListner;
-import com.mogujie.tt.utils.pinyin.PinYin;
+import com.nvim.config.SysConstant;
+import com.nvim.entity.RecentInfo;
+import com.nvim.lib.common.ErrorCode;
+import com.nvim.lib.network.SocketThread;
+import com.nvim.lib.utils.IMContactHelper;
+import com.nvim.lib.utils.IMUIHelper;
+import com.nvim.log.Logger;
+import com.nvim.packet.base.DataBuffer;
+import com.nvim.pinyin.PinYin;
+import com.nvim.proto.AllContactsPacket;
+import com.nvim.proto.ContactEntity;
+import com.nvim.proto.DepartmentEntity;
+import com.nvim.proto.DepartmentPacket;
+import com.nvim.proto.RecentContactsPacket;
+import com.nvim.proto.UnreadMsgContactListPacket;
+import com.nvim.proto.UnreadMsgPacket;
+import com.nvim.ui.utils.IMServiceHelper;
+import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
 
 public class IMContactManager extends IMManager implements OnIMServiceListner {
 

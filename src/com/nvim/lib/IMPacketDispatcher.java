@@ -2,10 +2,10 @@ package com.nvim.lib;
 
 import org.jboss.netty.buffer.ChannelBuffer;
 
-import com.mogujie.tt.config.ProtocolConstant;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.packet.base.DataBuffer;
-import com.mogujie.tt.packet.base.Header;
+import com.nvim.config.ProtocolConstant;
+import com.nvim.log.Logger;
+import com.nvim.packet.base.DataBuffer;
+import com.nvim.packet.base.Header;
 
 public class IMPacketDispatcher {
 	private static Logger logger = Logger.getLogger(IMPacketDispatcher.class);

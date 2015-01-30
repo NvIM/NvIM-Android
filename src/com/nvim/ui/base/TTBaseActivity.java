@@ -1,7 +1,5 @@
 package com.nvim.ui.base;
 
-import com.nvim.R;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;

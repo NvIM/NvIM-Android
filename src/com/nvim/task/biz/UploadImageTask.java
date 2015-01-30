@@ -8,15 +8,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 
-import com.mogujie.tt.config.HandlerConstant;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.config.TaskConstant;
-import com.mogujie.tt.entity.MessageInfo;
-import com.mogujie.tt.https.MoGuHttpClient;
-import com.mogujie.tt.imlib.IMUnAckMsgManager;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.task.MAsyncTask;
-import com.mogujie.tt.ui.tools.PhotoHandler;
+import com.nvim.config.HandlerConstant;
+import com.nvim.config.SysConstant;
+import com.nvim.config.TaskConstant;
+import com.nvim.entity.MessageInfo;
+import com.nvim.lib.IMUnAckMsgManager;
+import com.nvim.log.Logger;
+import com.nvim.task.MAsyncTask;
+import com.nvim.ui.tools.PhotoHandler;
 
 public class UploadImageTask extends MAsyncTask {
 	//	private String strUrl;

@@ -1,12 +1,9 @@
 
 package com.nvim.ui.tools;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import com.mogujie.tt.log.Logger;
-
 import android.graphics.Bitmap;
+
+import com.nvim.log.Logger;
 
 /***
  * @Desc bitmap缓存类

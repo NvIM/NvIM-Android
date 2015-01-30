@@ -1,10 +1,10 @@
 package com.nvim.lib;
 
-import com.mogujie.tt.entity.MessageInfo;
-import com.mogujie.tt.imlib.proto.ContactEntity;
-import com.mogujie.tt.imlib.proto.GroupEntity;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.ui.utils.IMServiceHelper;
+import com.nvim.entity.MessageInfo;
+import com.nvim.log.Logger;
+import com.nvim.proto.ContactEntity;
+import com.nvim.proto.GroupEntity;
+import com.nvim.ui.utils.IMServiceHelper;
 
 public class IMSession {
 	public static final int SESSION_ERROR = -1;

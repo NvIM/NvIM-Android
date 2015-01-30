@@ -13,9 +13,9 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.mogujie.tt.entity.IMRecentContact;
-import com.mogujie.tt.entity.RecentInfo;
-import com.mogujie.tt.log.Logger;
+import com.nvim.entity.IMRecentContact;
+import com.nvim.entity.RecentInfo;
+import com.nvim.log.Logger;
 
 public class ContactModel {
     private DBHelper helper;

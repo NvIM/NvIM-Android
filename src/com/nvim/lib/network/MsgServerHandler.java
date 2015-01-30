@@ -5,8 +5,8 @@ import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.ChannelStateEvent;
 import org.jboss.netty.channel.MessageEvent;
 
-import com.mogujie.tt.imlib.IMLoginManager;
-import com.mogujie.tt.imlib.IMPacketDispatcher;
+import com.nvim.lib.IMLoginManager;
+import com.nvim.lib.IMPacketDispatcher;
 
 public class MsgServerHandler extends BaseServerHandler {
 

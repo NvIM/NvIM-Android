@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.R;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -12,8 +13,7 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ImageSpan;
 
-import com.mogujie.tt.R;
-import com.mogujie.tt.utils.CommonUtil;
+import com.nvim.utils.CommonUtil;
 
 /**
  * @Description 表情解析

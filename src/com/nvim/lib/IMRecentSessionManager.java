@@ -9,18 +9,16 @@ import java.util.concurrent.ConcurrentHashMap;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 
-import com.mogujie.tt.adapter.ChatAdapter;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.entity.MessageInfo;
-import com.mogujie.tt.entity.RecentInfo;
-import com.mogujie.tt.imlib.common.ErrorCode;
-import com.mogujie.tt.imlib.proto.ContactEntity;
-import com.mogujie.tt.imlib.proto.GroupEntity;
-import com.mogujie.tt.imlib.utils.IMContactHelper;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.ui.fragment.ChatFragment;
-import com.mogujie.tt.ui.utils.IMServiceHelper;
-import com.mogujie.tt.ui.utils.IMServiceHelper.OnIMServiceListner;
+import com.nvim.config.SysConstant;
+import com.nvim.entity.MessageInfo;
+import com.nvim.entity.RecentInfo;
+import com.nvim.lib.common.ErrorCode;
+import com.nvim.lib.utils.IMContactHelper;
+import com.nvim.log.Logger;
+import com.nvim.proto.ContactEntity;
+import com.nvim.proto.GroupEntity;
+import com.nvim.ui.utils.IMServiceHelper;
+import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
 
 public class IMRecentSessionManager extends IMManager implements
         OnIMServiceListner {

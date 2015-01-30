@@ -4,10 +4,9 @@ package com.nvim.task.biz;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 
-import com.mogujie.tt.config.TaskConstant;
-import com.mogujie.tt.https.MoGuHttpClient;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.task.MAsyncTask;
+import com.nvim.config.TaskConstant;
+import com.nvim.log.Logger;
+import com.nvim.task.MAsyncTask;
 
 public class DownloadImageTask extends MAsyncTask {
     private String strUrl;

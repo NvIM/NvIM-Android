@@ -2,38 +2,26 @@
 package com.nvim.socket;
 
 import java.net.InetSocketAddress;
-
 import java.util.concurrent.Executors;
 
 import org.jboss.netty.bootstrap.ClientBootstrap;
-
 import org.jboss.netty.channel.Channel;
-
 import org.jboss.netty.channel.ChannelFactory;
-
 import org.jboss.netty.channel.ChannelFuture;
-
 import org.jboss.netty.channel.ChannelPipeline;
-
 import org.jboss.netty.channel.ChannelPipelineFactory;
-
 import org.jboss.netty.channel.Channels;
-
 import org.jboss.netty.channel.socket.nio.NioClientSocketChannelFactory;
-
 import org.jboss.netty.handler.codec.frame.LengthFieldBasedFrameDecoder;
 
 import android.os.Handler;
 
-
-
-
-import com.mogujie.tt.config.ProtocolConstant;
-import com.mogujie.tt.imlib.proto.PacketEncoder;
+import com.nvim.config.ProtocolConstant;
+import com.nvim.log.Logger;
+import com.nvim.packet.base.Header;
+import com.nvim.packet.base.Packet;
+import com.nvim.proto.PacketEncoder;
 //import com.mogujie.tt.conn.ReconnectManager;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.packet.base.Header;
-import com.mogujie.tt.packet.base.Packet;
 
 public class MoGuSocket extends Thread {
 

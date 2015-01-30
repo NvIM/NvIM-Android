@@ -1,15 +1,14 @@
 package com.nvim.lib;
 
-import com.mogujie.tt.imlib.service.IMService;
-import com.mogujie.tt.log.Logger;
+import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
+
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
-
-import android.app.Application;
-import android.content.Context;
-import android.content.Intent;
+import com.nvim.log.Logger;
 
 public class IMApplication extends Application {
 

@@ -1,16 +1,15 @@
 package com.nvim.lib.utils;
 
-import java.util.Date;
 import java.util.List;
 
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.entity.MessageInfo;
-import com.mogujie.tt.entity.RecentInfo;
-import com.mogujie.tt.entity.User;
-import com.mogujie.tt.imlib.IMSession;
-import com.mogujie.tt.imlib.proto.ContactEntity;
-import com.mogujie.tt.imlib.proto.GroupEntity;
-import com.mogujie.tt.utils.MessageSplitResult;
+import com.nvim.config.SysConstant;
+import com.nvim.entity.MessageInfo;
+import com.nvim.entity.RecentInfo;
+import com.nvim.entity.User;
+import com.nvim.lib.IMSession;
+import com.nvim.proto.ContactEntity;
+import com.nvim.proto.GroupEntity;
+import com.nvim.utils.MessageSplitResult;
 
 public class IMContactHelper {
 	public static String getRealAvatarUrl(String avatarUrl) {

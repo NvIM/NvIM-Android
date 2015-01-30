@@ -11,11 +11,11 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.PowerManager;
 
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.imlib.common.ErrorCode;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.ui.utils.IMServiceHelper;
-import com.mogujie.tt.ui.utils.IMServiceHelper.OnIMServiceListner;
+import com.nvim.config.SysConstant;
+import com.nvim.lib.common.ErrorCode;
+import com.nvim.log.Logger;
+import com.nvim.ui.utils.IMServiceHelper;
+import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
 
 public class IMReconnectManager extends IMManager implements OnIMServiceListner {
 

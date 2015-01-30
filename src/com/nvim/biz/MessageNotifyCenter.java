@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import android.os.Handler;
 import android.os.Message;
 
-import com.mogujie.tt.config.SysConstant;
+import com.nvim.config.SysConstant;
 
 /**
  * @Description 消息通知中心

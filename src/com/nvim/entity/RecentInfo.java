@@ -3,13 +3,12 @@ package com.nvim.entity;
 
 import java.util.Date;
 
+import android.R;
 import android.text.TextUtils;
-import android.util.Log;
 
-import com.mogujie.tt.R;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.utils.DateUtil;
+import com.nvim.config.SysConstant;
+import com.nvim.log.Logger;
+import com.nvim.utils.DateUtil;
 
 /**
  * @author seishuchen

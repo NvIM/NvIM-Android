@@ -1,14 +1,11 @@
 package com.nvim.ui.utils;
 
-import com.mogujie.tt.R;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.ui.base.TTBaseFragment;
-import com.mogujie.tt.widget.SortSideBar;
-
 import android.content.Context;
 import android.view.View;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+
+import com.nvim.log.Logger;
 
 public class IMContactListViewHelper {
 

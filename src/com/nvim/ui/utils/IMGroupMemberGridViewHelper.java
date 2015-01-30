@@ -2,26 +2,22 @@ package com.nvim.ui.utils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.GridView;
 
-import com.mogujie.tt.adapter.GroupManagerAdapter;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.imlib.IMSession;
-import com.mogujie.tt.imlib.proto.ContactEntity;
-import com.mogujie.tt.imlib.service.IMService;
-import com.mogujie.tt.log.Logger;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
+import com.nvim.config.SysConstant;
+import com.nvim.lib.IMSession;
+import com.nvim.log.Logger;
+import com.nvim.proto.ContactEntity;
 
 public class IMGroupMemberGridViewHelper {
 	private Logger logger = Logger.getLogger(IMGroupMemberGridViewHelper.class);

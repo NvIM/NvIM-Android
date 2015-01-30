@@ -4,7 +4,7 @@ import java.util.List;
 
 import android.util.Log;
 
-import com.mogujie.tt.log.Logger;
+import com.nvim.log.Logger;
 
 public class DumpUtils {
 	public static void dumpStringList(Logger logger, String desc,

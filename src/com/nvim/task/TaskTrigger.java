@@ -4,8 +4,7 @@ package com.nvim.task;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.timer.ITimerProcessor;
+import com.nvim.log.Logger;
 
 public class TaskTrigger implements ITimerProcessor {
 

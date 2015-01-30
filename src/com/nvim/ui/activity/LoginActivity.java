@@ -3,6 +3,7 @@ package com.nvim.ui.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,20 +22,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mogujie.tt.app.IMEntrance;
-import com.mogujie.tt.cache.biz.CacheHub;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.conn.NetStateDispach;
-import com.mogujie.tt.imlib.IMActions;
-import com.mogujie.tt.imlib.IMLoginManager;
-import com.mogujie.tt.imlib.common.ErrorCode;
-import com.mogujie.tt.imlib.db.IMDbManager.LoginIdentity;
-import com.mogujie.tt.imlib.service.IMService;
-import com.mogujie.tt.ui.utils.IMServiceHelper;
-import com.mogujie.tt.ui.utils.IMServiceHelper.OnIMServiceListner;
-import com.nvim.R;
+import com.nvim.app.IMEntrance;
+import com.nvim.cache.biz.CacheHub;
+import com.nvim.config.SysConstant;
+import com.nvim.lib.IMActions;
+import com.nvim.lib.IMLoginManager;
+import com.nvim.lib.common.ErrorCode;
+import com.nvim.lib.db.IMDbManager.LoginIdentity;
 import com.nvim.log.Logger;
 import com.nvim.ui.base.TTBaseActivity;
+import com.nvim.ui.utils.IMServiceHelper;
+import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
 
 public class LoginActivity extends TTBaseActivity implements OnIMServiceListner {
 

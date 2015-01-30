@@ -5,8 +5,8 @@ import java.util.List;
 
 import android.text.TextUtils;
 
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.utils.pinyin.HanziToPinyin3.Token;
+import com.nvim.log.Logger;
+import com.nvim.pinyin.HanziToPinyin3.Token;
 
 public class PinYin {
 	public static class PinYinElement {

@@ -14,9 +14,9 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.entity.MessageInfo;
-import com.mogujie.tt.log.Logger;
+import com.nvim.config.SysConstant;
+import com.nvim.entity.MessageInfo;
+import com.nvim.log.Logger;
 
 /**
  * 

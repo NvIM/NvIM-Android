@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.R;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.ComponentName;
@@ -19,6 +20,9 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
+
+import com.nvim.config.SysConstant;
+import com.nvim.ui.tools.PhotoHandler;
 
 public class CommonUtil {
     /**

@@ -2,14 +2,14 @@ package com.nvim.ui.tools;
 
 import java.io.File;
 
-import com.mogujie.tt.log.Logger;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.util.DisplayMetrics;
+
+import com.nvim.log.Logger;
 
 /**
  * @Description 图片处理

@@ -10,12 +10,11 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.config.TaskConstant;
-import com.mogujie.tt.https.MoGuHttpClient;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.task.MAsyncTask;
-import com.mogujie.tt.utils.StringUtil;
+import com.nvim.config.SysConstant;
+import com.nvim.config.TaskConstant;
+import com.nvim.log.Logger;
+import com.nvim.task.MAsyncTask;
+import com.nvim.utils.StringUtil;
 
 public class CheckUserBlockTask extends MAsyncTask {
 

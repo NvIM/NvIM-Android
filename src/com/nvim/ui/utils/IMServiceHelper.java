@@ -10,11 +10,6 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 
-import com.mogujie.tt.imlib.IMActions;
-import com.mogujie.tt.imlib.IMContactManager;
-import com.mogujie.tt.imlib.service.IMService;
-import com.mogujie.tt.imlib.service.IMService.IMServiceBinder;
-import com.mogujie.tt.ui.base.TTBaseFragment;
 import com.nvim.log.Logger;
 
 public class IMServiceHelper {

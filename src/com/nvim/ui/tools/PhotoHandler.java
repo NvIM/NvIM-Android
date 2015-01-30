@@ -6,6 +6,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+
+import android.R;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,11 +20,9 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.mogujie.tt.R;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.ui.activity.MessageActivity;
-import com.mogujie.tt.utils.CommonUtil;
+import com.nvim.config.SysConstant;
+import com.nvim.log.Logger;
+import com.nvim.utils.CommonUtil;
 
 public class PhotoHandler {
     private Context context;

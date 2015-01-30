@@ -7,12 +7,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+
 import com.nvim.config.HandlerConstant;
 import com.nvim.config.ProtocolConstant;
 import com.nvim.config.SysConstant;
 import com.nvim.entity.MessageInfo;
 import com.nvim.lib.db.IMDbManager;
 import com.nvim.lib.network.SocketThread;
+import com.nvim.lib.utils.IMContactHelper;
 import com.nvim.lib.utils.IMUIHelper;
 import com.nvim.log.Logger;
 import com.nvim.packet.base.DataBuffer;
@@ -24,17 +31,12 @@ import com.nvim.proto.GroupUnreadMsgPacket;
 import com.nvim.proto.MessageEntity;
 import com.nvim.proto.MessageNotifyPacket;
 import com.nvim.proto.MessagePacket;
+import com.nvim.proto.MessagePacket.PacketResponse;
+import com.nvim.proto.UnreadMsgPacket;
 import com.nvim.task.TaskManager;
 import com.nvim.task.biz.UploadImageTask;
 import com.nvim.ui.utils.IMServiceHelper;
 import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
-
-import android.annotation.SuppressLint;
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 
 public class IMMessageManager extends IMManager implements OnIMServiceListner {
 	private static IMMessageManager inst;

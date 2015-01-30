@@ -5,10 +5,10 @@ import java.util.List;
 import android.content.Context;
 import android.view.View;
 
-import com.mogujie.tt.imlib.proto.ContactEntity;
-import com.mogujie.tt.imlib.proto.GroupEntity;
-import com.mogujie.tt.imlib.utils.IMUIHelper;
-import com.mogujie.tt.log.Logger;
+import com.nvim.lib.utils.IMUIHelper;
+import com.nvim.log.Logger;
+import com.nvim.proto.ContactEntity;
+import com.nvim.proto.GroupEntity;
 
 public abstract class EntityList {
 	public List<Object> list;

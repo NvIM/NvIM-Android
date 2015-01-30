@@ -1,8 +1,8 @@
 package com.nvim.packet.base;
 
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.utils.SequenceNumberMaker;
+import com.nvim.config.SysConstant;
+import com.nvim.log.Logger;
+import com.nvim.utils.SequenceNumberMaker;
 
 public class DefaultHeader extends Header {
 

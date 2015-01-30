@@ -5,7 +5,7 @@ import org.jboss.netty.channel.ChannelStateEvent;
 import org.jboss.netty.channel.ExceptionEvent;
 import org.jboss.netty.channel.SimpleChannelHandler;
 
-import com.mogujie.tt.log.Logger;
+import com.nvim.log.Logger;
 
 public abstract class BaseServerHandler extends SimpleChannelHandler {
 

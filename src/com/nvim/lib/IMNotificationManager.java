@@ -3,36 +3,33 @@ package com.nvim.lib;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationCompat.Builder;
 import android.view.View;
 
-import com.mogujie.tt.R;
-import com.mogujie.tt.entity.MessageInfo;
-import com.mogujie.tt.imlib.common.ConfigDefs;
-import com.mogujie.tt.imlib.proto.ContactEntity;
-import com.mogujie.tt.imlib.proto.GroupEntity;
-import com.mogujie.tt.imlib.proto.MessageEntity;
-import com.mogujie.tt.imlib.utils.IMContactHelper;
-import com.mogujie.tt.imlib.utils.IMUIHelper;
-import com.mogujie.tt.imlib.utils.IMUIHelper.SessionInfo;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.ui.activity.MessageActivity;
-import com.mogujie.tt.ui.utils.IMServiceHelper;
-import com.mogujie.tt.ui.utils.IMServiceHelper.OnIMServiceListner;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.nvim.entity.MessageInfo;
+import com.nvim.lib.common.ConfigDefs;
+import com.nvim.lib.utils.IMContactHelper;
+import com.nvim.lib.utils.IMUIHelper;
+import com.nvim.lib.utils.IMUIHelper.SessionInfo;
+import com.nvim.log.Logger;
+import com.nvim.proto.ContactEntity;
+import com.nvim.proto.GroupEntity;
+import com.nvim.proto.MessageEntity;
+import com.nvim.ui.utils.IMServiceHelper;
+import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
+import com.squareup.picasso.Request.Builder;
 
 public class IMNotificationManager extends IMManager
 		implements

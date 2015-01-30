@@ -1,6 +1,6 @@
 package com.nvim.entity;
 
-import com.mogujie.tt.cache.biz.CacheHub;
+import com.nvim.cache.biz.CacheHub;
 
 /**
  * @author shuchen
