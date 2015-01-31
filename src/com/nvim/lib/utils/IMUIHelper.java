@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
-import android.R;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -26,12 +26,15 @@ import android.widget.TextView.BufferType;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nvim.R;
+import com.nvim.adapter.GroupManagerAdapter;
 import com.nvim.config.SysConstant;
 import com.nvim.entity.MessageInfo;
 import com.nvim.lib.IMActions;
 import com.nvim.lib.IMContactManager;
 import com.nvim.lib.IMGroupManager;
 import com.nvim.lib.IMSession;
+import com.nvim.lib.service.IMService;
 import com.nvim.log.Logger;
 import com.nvim.pinyin.PinYin.PinYinElement;
 import com.nvim.proto.ContactEntity;
@@ -149,6 +152,7 @@ public class IMUIHelper {
 		return handleNameSearch(pinYinElement.tokenFirstChars, key.toUpperCase(), searchElement);
 	}
 	
+	@SuppressLint("NewApi")
 	public static boolean handleTokenPinyinFullSearch(String key, PinYinElement pinYinElement, SearchElement searchElement) {
 		if (TextUtils.isEmpty(key)) {
 			return false;
@@ -284,6 +288,7 @@ public class IMUIHelper {
 		return String.format("%s(%s)", ctx.getString(R.string.call_phone), getPhoneNumberDescription(ctx, contact));
 	}
 
+	@SuppressLint("NewApi")
 	private static String getPhoneNumberDescription(Context ctx,
 			ContactEntity contact) {
 		if (contact.telephone == null || contact.telephone.isEmpty()) {
@@ -293,6 +298,7 @@ public class IMUIHelper {
 		}
 	}
 
+	@SuppressLint("NewApi")
 	public static void callPhone(Context ctx, String phoneNumber) {
 		if (ctx == null) {
 			return;
@@ -310,39 +316,40 @@ public class IMUIHelper {
 	}
 
 	public static void openUserProfileActivity(Context ctx, String contactId) {
-		Intent intent = new Intent(ctx, UserInfoActivity.class);
-		IMUIHelper.setSessionInIntent(intent, contactId, IMSession.SESSION_P2P);
-		ctx.startActivity(intent);
+//		Intent intent = new Intent(ctx, UserInfoActivity.class);
+//		IMUIHelper.setSessionInIntent(intent, contactId, IMSession.SESSION_P2P);
+//		ctx.startActivity(intent);
 	}
 
 	public static boolean openSessionChatActivity(Logger logger, Context ctx,
 			String sessionId, int sessionType, IMService imService) {
-		if (logger == null || ctx == null || sessionId == null
-				|| imService == null) {
-			logger.e("chat#openSessionChatActivity invalid args");
-			return false;
-		}
-
-		if (sessionType == IMSession.SESSION_P2P) {
-			ContactEntity contact = imService.getContactManager().findContact(sessionId);
-			if (contact == null) {
-				logger.e("chat#no such contact -> id:%s", sessionId);
-				return false;
-			}
-
-			openContactChatActivity(ctx, contact);
+//		if (logger == null || ctx == null || sessionId == null
+//				|| imService == null) {
+//			logger.e("chat#openSessionChatActivity invalid args");
+//			return false;
+//		}
+//
+//		if (sessionType == IMSession.SESSION_P2P) {
+//			ContactEntity contact = imService.getContactManager().findContact(sessionId);
+//			if (contact == null) {
+//				logger.e("chat#no such contact -> id:%s", sessionId);
+//				return false;
+//			}
+//
+//			openContactChatActivity(ctx, contact);
+//			return true;
+//		} else {
+//			GroupEntity group = imService.getGroupManager().findGroup(sessionId);
+//			if (group == null) {
+//				logger.e("chat#no such group -> id:%s", sessionId);
+//				return false;
+//			}
+//
+//			openGroupChatActivity(ctx, group);
+//
+//			return true;
+//		}
 			return true;
-		} else {
-			GroupEntity group = imService.getGroupManager().findGroup(sessionId);
-			if (group == null) {
-				logger.e("chat#no such group -> id:%s", sessionId);
-				return false;
-			}
-
-			openGroupChatActivity(ctx, group);
-
-			return true;
-		}
 	}
 
 	public static void openContactChatActivity(Context ctx,
@@ -372,10 +379,10 @@ public class IMUIHelper {
 //		setSessionInIntent(intent, sessionId, sessionType);
 //		ctx.sendBroadcast(intent);
 		
-		Intent i = new Intent(ctx, MessageActivity.class);
-		setSessionInIntent(i, sessionId, sessionType);
-
-		ctx.startActivity(i);
+//		Intent i = new Intent(ctx, MessageActivity.class);
+//		setSessionInIntent(i, sessionId, sessionType);
+//
+//		ctx.startActivity(i);
 	}
 
 	public static boolean setMessageOwnerName(Logger logger, IMSession session,
@@ -558,19 +565,19 @@ public class IMUIHelper {
 
 		List<ContactEntity> contactList = new ArrayList<ContactEntity>();
 		if (sessiondType == IMSession.SESSION_P2P) {
-			ContactEntity contact = imService.getContactManager().findContact(sessionId);
-			if (contact == null) {
-				logger.e("groupmgr#no such contact by id:%s", sessionId);
-				return;
-			}
-
-			contactList.add(contact);
+//			ContactEntity contact = imService.getContactManager().findContact(sessionId);
+//			if (contact == null) {
+//				logger.e("groupmgr#no such contact by id:%s", sessionId);
+//				return;
+//			}
+//
+//			contactList.add(contact);
 		} else {
-			contactList = imService.getGroupManager().getGroupMembers(sessionId);
-			if (contactList == null) {
-				logger.e("groupmgr#get members from group id:%s failed", sessionId);
-				return;
-			}
+//			contactList = imService.getGroupManager().getGroupMembers(sessionId);
+//			if (contactList == null) {
+//				logger.e("groupmgr#get members from group id:%s failed", sessionId);
+//				return;
+//			}
 		}
 
 		adapter.setData(contactList);

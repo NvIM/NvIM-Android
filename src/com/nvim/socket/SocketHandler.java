@@ -13,6 +13,7 @@ import android.os.Message;
 
 import com.nvim.config.HandlerConstant;
 import com.nvim.config.SysConstant;
+import com.nvim.conn.ConnectionStore;
 import com.nvim.log.Logger;
 import com.nvim.packet.base.DataBuffer;
 //import com.mogujie.tt.conn.ReconnectManager;

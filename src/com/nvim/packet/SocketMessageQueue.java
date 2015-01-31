@@ -1,5 +1,5 @@
 
-package com.mogujie.tt.packet;
+package com.nvim.packet;
 
 import java.util.LinkedList;
 import java.util.Map;
@@ -10,9 +10,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.packet.action.Action;
-import com.mogujie.tt.packet.base.Packet;
+import com.nvim.log.Logger;
+import com.nvim.packet.action.Action;
+import com.nvim.packet.base.Packet;
 
 /**
  * 消息队列，要通过socket发送的请求都必须提交到这个队列里面来

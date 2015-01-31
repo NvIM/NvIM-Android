@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import android.R;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -20,6 +19,7 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.nvim.R;
 import com.nvim.config.SysConstant;
 import com.nvim.log.Logger;
 import com.nvim.utils.CommonUtil;
@@ -165,8 +165,8 @@ public class PhotoHandler {
         intent.putExtra(MediaStore.EXTRA_OUTPUT,
                 Uri.fromFile(new File(takePhotoSavePath)));
         // intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
-        ((MessageActivity) context).startActivityForResult(intent,
-                SysConstant.CAMERA_WITH_DATA);
+//        ((MessageActivity) context).startActivityForResult(intent,
+//                SysConstant.CAMERA_WITH_DATA);
     }
 
     /**

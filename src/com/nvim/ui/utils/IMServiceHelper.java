@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 
+import com.nvim.lib.service.IMService;
 import com.nvim.log.Logger;
 
 public class IMServiceHelper {
@@ -59,15 +60,15 @@ public class IMServiceHelper {
 			logger.i("im#onService(imService)Connected");
 
 			if (imService == null) {
-				IMServiceBinder binder = (IMServiceBinder) service;
-				imService = binder.getService();
-
-				if (imService == null) {
-					logger.e("im#get imService failed");
-					return;
-				}
-
-				logger.d("im#get imService ok");
+//				IMServiceBinder binder = (IMServiceBinder) service;
+//				imService = binder.getService();
+//
+//				if (imService == null) {
+//					logger.e("im#get imService failed");
+//					return;
+//				}
+//
+//				logger.d("im#get imService ok");
 			}
 
 			listener.onIMServiceConnected();

@@ -279,7 +279,7 @@ public class IMGroupManager extends IMManager implements OnIMServiceListner {
 		param.changeType = changeType;
 		param.memberList = memberList;
 
-		channel.sendPacket(new ChangeTempGroupMemberPacket(param));
+//		channel.sendPacket(new ChangeTempGroupMemberPacket(param));
 
 	}
 

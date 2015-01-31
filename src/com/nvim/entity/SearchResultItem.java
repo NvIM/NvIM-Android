@@ -1,9 +1,9 @@
 
 package com.nvim.entity;
 
-import android.R;
 import android.text.TextUtils;
 
+import com.nvim.R;
 import com.nvim.config.SysConstant;
 
 public class SearchResultItem {

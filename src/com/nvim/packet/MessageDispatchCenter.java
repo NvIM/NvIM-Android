@@ -1,5 +1,5 @@
 
-package com.mogujie.tt.packet;
+package com.nvim.packet;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,15 +12,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
-import com.mogujie.tt.config.ProtocolConstant;
-import com.mogujie.tt.imlib.IMPacketDispatcher;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.packet.action.Action;
-import com.mogujie.tt.packet.action.ActionCallback;
-import com.mogujie.tt.packet.action.Action.Builder;
-import com.mogujie.tt.packet.base.DataBuffer;
-import com.mogujie.tt.packet.base.Header;
-import com.mogujie.tt.packet.base.Packet;
+import com.nvim.log.Logger;
 
 /**
  * 消息处理中心

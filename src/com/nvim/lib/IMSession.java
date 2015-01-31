@@ -11,10 +11,10 @@ public class IMSession {
 	public static final int SESSION_P2P = 0;
 	public static final int SESSION_GROUP = 1;
 	public static final int SESSION_TEMP_GROUP = 2; // 讨论组
-	
+
 	private static Logger logger = Logger.getLogger(IMSession.class);
 
-	private int type; 
+	private int type;
 	// for p2p, sessionid is the peer id
 	// for group and temp group, it is the real session id
 	private String sessionId = "";
@@ -47,29 +47,28 @@ public class IMSession {
 	public void sendText(int sessionType, MessageInfo msgInfo) {
 		// todo eric location:send here
 		// todo eric should check imservice is ok or not
-		
-		
-		//todo only need check imservice is ok or not
+
+		// todo only need check imservice is ok or not
 		if (imServiceHelper == null) {
 			return;
 		}
 
-		imServiceHelper
-				.getIMService()
-				.getMessageManager()
-				.sendText(sessionId, msgInfo.getMsgContent(), sessionType,
-						msgInfo);
+		// imServiceHelper
+		// .getIMService()
+		// .getMessageManager()
+		// .sendText(sessionId, msgInfo.getMsgContent(), sessionType,
+		// msgInfo);
 	}
 
 	public ContactEntity getSessionContact(String contactId) {
-		
+
 		if (imServiceHelper == null) {
 			return null;
 		}
 
-		ContactEntity contact = imServiceHelper.getIMService()
-				.getContactManager().findContact(contactId);
-		return contact;
+		// ContactEntity contact = imServiceHelper.getIMService()
+		// .getContactManager().findContact(contactId);
+		return null;
 	}
 
 	public GroupEntity getSessionGroup() {
@@ -81,13 +80,12 @@ public class IMSession {
 			return null;
 		}
 
-		GroupEntity group = imServiceHelper.getIMService().getGroupManager()
-				.findGroup(sessionId);
-		return group;
+//		GroupEntity group = imServiceHelper.getIMService().getGroupManager().findGroup(sessionId);
+		return null;
 	}
 
 	public ContactEntity getLoginContact() {
-		return imServiceHelper.getIMService().getContactManager()
-				.getLoginContact();
+//		return imServiceHelper.getIMService().getContactManager().getLoginContact();
+		return null;
 	}
 }

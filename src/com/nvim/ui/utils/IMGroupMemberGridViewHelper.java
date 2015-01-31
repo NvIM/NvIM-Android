@@ -14,8 +14,10 @@ import android.widget.GridView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
+import com.nvim.adapter.GroupManagerAdapter;
 import com.nvim.config.SysConstant;
 import com.nvim.lib.IMSession;
+import com.nvim.lib.service.IMService;
 import com.nvim.log.Logger;
 import com.nvim.proto.ContactEntity;
 
@@ -82,22 +84,22 @@ public class IMGroupMemberGridViewHelper {
 
 		List<ContactEntity> contactList = new ArrayList<ContactEntity>();
 		if (sessionType == IMSession.SESSION_P2P) {
-			ContactEntity contact = imService.getContactManager().findContact(
-					sessionId);
-			if (contact == null) {
-				logger.e("groupmgr#no such contact by id:%s", sessionId);
-				return;
-			}
+//			ContactEntity contact = imService.getContactManager().findContact(
+//					sessionId);
+//			if (contact == null) {
+//				logger.e("groupmgr#no such contact by id:%s", sessionId);
+//				return;
+//			}
 
-			contactList.add(contact);
+//			contactList.add(contact);
 		} else {
-			contactList = imService.getGroupManager()
-					.getGroupMembers(sessionId);
-			if (contactList == null) {
-				logger.e("groupmgr#get members from group id:%s failed",
-						sessionId);
-				return;
-			}
+//			contactList = imService.getGroupManager()
+//					.getGroupMembers(sessionId);
+//			if (contactList == null) {
+//				logger.e("groupmgr#get members from group id:%s failed",
+//						sessionId);
+//				return;
+//			}
 		}
 
 		adapter.setData(contactList);

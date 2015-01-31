@@ -5,6 +5,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import com.nvim.log.Logger;
+import com.nvim.timer.ITimerProcessor;
 
 public class TaskTrigger implements ITimerProcessor {
 

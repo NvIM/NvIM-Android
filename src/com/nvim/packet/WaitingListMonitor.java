@@ -1,18 +1,19 @@
 
-package com.mogujie.tt.packet;
+package com.nvim.packet;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.packet.action.Action;
-import com.mogujie.tt.packet.action.ActionCallback;
+import com.nvim.log.Logger;
+import com.nvim.packet.action.Action;
+import com.nvim.packet.action.ActionCallback;
 
 /**
  * Waiting list扫描线程, 一般情况下，这个线程只应该开启一条

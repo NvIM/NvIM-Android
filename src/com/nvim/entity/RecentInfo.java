@@ -3,9 +3,9 @@ package com.nvim.entity;
 
 import java.util.Date;
 
-import android.R;
 import android.text.TextUtils;
 
+import com.nvim.R;
 import com.nvim.config.SysConstant;
 import com.nvim.log.Logger;
 import com.nvim.utils.DateUtil;

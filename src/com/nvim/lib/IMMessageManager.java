@@ -428,6 +428,7 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 	}
 
 	// msgInfoList should belong to the same session
+	@SuppressLint("NewApi")
 	private void handleUnreadMsgListImpl(List<MessageInfo> allMsgList) {
 		logger.d("chat#repeat#handleUnreadMsgListImpl");
 		if (allMsgList == null || allMsgList.isEmpty()) {
@@ -535,9 +536,9 @@ public class IMMessageManager extends IMManager implements OnIMServiceListner {
 		UnreadMsgPacket packet = new UnreadMsgPacket();
 		packet.decode(buffer);
 
-		UnreadMsgPacket.PacketResponse response = (PacketResponse) packet.getResponse();
-
-		handleUnreadMsgList(response.entityList);
+//		UnreadMsgPacket.PacketResponse response = (PacketResponse) packet.getResponse();
+//
+//		handleUnreadMsgList(response.entityList);
 	}
 
 	public void onRepGroupUnreadMsg(DataBuffer buffer) {

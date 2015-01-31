@@ -5,7 +5,9 @@ import android.view.View;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.nvim.R;
 import com.nvim.log.Logger;
+import com.nvim.ui.widget.SortSideBar;
 
 public class IMContactListViewHelper {
 

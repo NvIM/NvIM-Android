@@ -1,15 +1,15 @@
 
-package com.mogujie.tt.packet;
+package com.nvim.packet;
 
 import android.os.Process;
 
-import com.mogujie.tt.config.ProtocolConstant;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.conn.ConnectionStore;
-import com.mogujie.tt.log.Logger;
-import com.mogujie.tt.packet.action.Action;
-import com.mogujie.tt.packet.action.ActionCallback;
-import com.mogujie.tt.socket.MoGuSocket;
+import com.nvim.config.ProtocolConstant;
+import com.nvim.config.SysConstant;
+import com.nvim.conn.ConnectionStore;
+import com.nvim.log.Logger;
+import com.nvim.packet.action.Action;
+import com.nvim.packet.action.ActionCallback;
+import com.nvim.socket.MoGuSocket;
 
 public class PacketSendMonitor {
 

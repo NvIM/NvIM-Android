@@ -12,6 +12,7 @@ import com.nvim.config.HandlerConstant;
 import com.nvim.config.SysConstant;
 import com.nvim.config.TaskConstant;
 import com.nvim.entity.MessageInfo;
+import com.nvim.http.MoGuHttpClient;
 import com.nvim.lib.IMUnAckMsgManager;
 import com.nvim.log.Logger;
 import com.nvim.task.MAsyncTask;

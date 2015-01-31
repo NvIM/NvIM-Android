@@ -3,7 +3,6 @@ package com.nvim.ui.activity;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.R;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -22,13 +21,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nvim.R;
 import com.nvim.app.IMEntrance;
 import com.nvim.cache.biz.CacheHub;
 import com.nvim.config.SysConstant;
+import com.nvim.conn.NetStateDispach;
 import com.nvim.lib.IMActions;
 import com.nvim.lib.IMLoginManager;
 import com.nvim.lib.common.ErrorCode;
 import com.nvim.lib.db.IMDbManager.LoginIdentity;
+import com.nvim.lib.service.IMService;
 import com.nvim.log.Logger;
 import com.nvim.ui.base.TTBaseActivity;
 import com.nvim.ui.utils.IMServiceHelper;
@@ -138,22 +140,22 @@ public class LoginActivity extends TTBaseActivity implements OnIMServiceListner 
 			return;
 		}
 
-		imLoginMgr = imService.getLoginManager();
+//		imLoginMgr = imService.getLoginManager();
+//
+//		if (imLoginMgr != null) {
+//			logger.i("chat#connect im service ok");
+//		}
 
-		if (imLoginMgr != null) {
-			logger.i("chat#connect im service ok");
-		}
-
-		try {
-			loginIdentity = imService.getDbManager().loadLoginIdentity();
-			if (loginIdentity == null) {
-				handleNoLoginIdentity();
-			} else {
-				handleGotLoginIdentity();
-			}
-		} catch (Exception e) {
-			logger.w("loadIdentity failed");
-		}
+//		try {
+//			loginIdentity = imService.getDbManager().loadLoginIdentity();
+//			if (loginIdentity == null) {
+//				handleNoLoginIdentity();
+//			} else {
+//				handleGotLoginIdentity();
+//			}
+//		} catch (Exception e) {
+//			logger.w("loadIdentity failed");
+//		}
 	}
 
 	private void handleNoLoginIdentity() {
@@ -493,19 +495,19 @@ public class LoginActivity extends TTBaseActivity implements OnIMServiceListner 
 	private void onLoginSuccess() {
 		logger.i("login#onLoginSuccess");
 
-		//		 todo eric remove it
-		CacheHub.getInstance().setLoginUser(imServiceHelper.getIMService().getLoginManager().getLoginUser());
-
-		// todo eric remove this
-		// Intent i = new Intent();
-		// i.setAction(SysConstant.START_SERVICE_ACTION);
-		// LoginActivity.this.sendBroadcast(i);
-
-		Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-
-		startActivity(intent);
-
-		LoginActivity.this.finish();
+//		//		 todo eric remove it
+//		CacheHub.getInstance().setLoginUser(imServiceHelper.getIMService().getLoginManager().getLoginUser());
+//
+//		// todo eric remove this
+//		// Intent i = new Intent();
+//		// i.setAction(SysConstant.START_SERVICE_ACTION);
+//		// LoginActivity.this.sendBroadcast(i);
+//
+//		Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//
+//		startActivity(intent);
+//
+//		LoginActivity.this.finish();
 	}
 
 	@Override

@@ -3,9 +3,9 @@ package com.nvim.task.biz;
 
 import android.content.Context;
 
-import com.mogujie.tt.config.TaskConstant;
-import com.mogujie.tt.entity.MessageInfo;
-import com.mogujie.tt.task.MAsyncTask;
+import com.nvim.config.TaskConstant;
+import com.nvim.entity.MessageInfo;
+import com.nvim.task.MAsyncTask;
 
 /**
  * @Description 发送语音消息Task

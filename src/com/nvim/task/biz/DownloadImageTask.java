@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 
 import com.nvim.config.TaskConstant;
+import com.nvim.http.MoGuHttpClient;
 import com.nvim.log.Logger;
 import com.nvim.task.MAsyncTask;
 

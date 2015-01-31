@@ -3,8 +3,9 @@ package com.nvim.lib;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.R;
+import android.annotation.SuppressLint;
 import android.app.Notification;
+import android.app.Notification.Builder;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -18,6 +19,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.nvim.R;
 import com.nvim.entity.MessageInfo;
 import com.nvim.lib.common.ConfigDefs;
 import com.nvim.lib.utils.IMContactHelper;
@@ -29,7 +31,6 @@ import com.nvim.proto.GroupEntity;
 import com.nvim.proto.MessageEntity;
 import com.nvim.ui.utils.IMServiceHelper;
 import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
-import com.squareup.picasso.Request.Builder;
 
 public class IMNotificationManager extends IMManager
 		implements
@@ -205,66 +206,73 @@ public class IMNotificationManager extends IMManager
 		});
 	}
 
+	@SuppressLint("NewApi")
 	private void showInNotificationBar(MessageEntity msg, String sessionId,
 			int sessionType, Bitmap iconBitmap, int sessionTotalMsgCnt) {
-		logger.d("notification#showInNotificationBar msg:%s, sessionId:%s, sessionType:%d, sessionTotalMsgCnt:%d", msg, sessionId, sessionType, sessionTotalMsgCnt);
+		// logger.d("notification#showInNotificationBar msg:%s, sessionId:%s, sessionType:%d, sessionTotalMsgCnt:%d",
+		// msg, sessionId, sessionType, sessionTotalMsgCnt);
+		//
+		// NotificationManager notifyMgr = (NotificationManager)
+		// ctx.getSystemService(Context.NOTIFICATION_SERVICE);
+		// if (notifyMgr == null) {
+		// return;
+		// }
+		//
+		// Builder builder = new Notification.Builder(ctx);
+		// builder.setContentTitle(getNotificationTitle(msg));
+		// builder.setContentText(getNotificationContentText(sessionTotalMsgCnt,
+		// msg));
+		// builder.setSmallIcon(R.drawable.tt_logo);
+		// builder.setTicker(getRollingText(sessionTotalMsgCnt, msg, false));
+		// builder.setWhen(System.currentTimeMillis());
+		// builder.setAutoCancel(true);
+		//
+		// // this is the content near the right bottom side
+		// // builder.setContentInfo("content info");
+		//
+		// if (shouldUseNotificationVibration()) {
+		// // delay 0ms, vibrate 200ms, delay 250ms, vibrate 200ms
+		// long[] vibrate = {0, 200, 250, 200};
+		// builder.setVibrate(vibrate);
+		// } else {
+		// logger.d("notification#setting is not using vibration");
+		// }
+		//
+		// // sound
+		// if (shouldUseNotificationSound()) {
+		// builder.setDefaults(Notification.DEFAULT_SOUND);
+		// } else {
+		// logger.d("notification#setting is not using sound");
+		// }
+		// if (iconBitmap != null) {
+		// logger.d("notification#fetch icon from network ok");
+		// builder.setLargeIcon(iconBitmap);
+		// } else {
+		// // todo eric default avatar is too small, need big size(128 * 128)
+		// Bitmap defaultBitmap =
+		// BitmapFactory.decodeResource(ctx.getResources(),
+		// IMUIHelper.getDefaultAvatarResId(msg.sessionType));
+		// if (defaultBitmap != null) {
+		// builder.setLargeIcon(defaultBitmap);
+		// }
+		// }
+		//
+		// int notificationId = getSessionNotificationId(sessionId,
+		// sessionType);
 
-		NotificationManager notifyMgr = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
-		if (notifyMgr == null) {
-			return;
-		}
-
-		Builder builder = new NotificationCompat.Builder(ctx);
-		builder.setContentTitle(getNotificationTitle(msg));
-		builder.setContentText(getNotificationContentText(sessionTotalMsgCnt, msg));
-		builder.setSmallIcon(R.drawable.tt_logo);
-		builder.setTicker(getRollingText(sessionTotalMsgCnt, msg, false));
-		builder.setWhen(System.currentTimeMillis());
-		builder.setAutoCancel(true);
-
-		// this is the content near the right bottom side
-		// builder.setContentInfo("content info");
-
-		if (shouldUseNotificationVibration()) {
-			// delay 0ms, vibrate 200ms, delay 250ms, vibrate 200ms
-			long[] vibrate = {0, 200, 250, 200};
-			builder.setVibrate(vibrate);
-		} else {
-			logger.d("notification#setting is not using vibration");
-		}
-
-		// sound
-		if (shouldUseNotificationSound()) {
-			builder.setDefaults(Notification.DEFAULT_SOUND);
-		} else {
-			logger.d("notification#setting is not using sound");
-		}
-		if (iconBitmap != null) {
-			logger.d("notification#fetch icon from network ok");
-			builder.setLargeIcon(iconBitmap);
-		} else {
-			// todo eric default avatar is too small, need big size(128 * 128)
-			Bitmap defaultBitmap = BitmapFactory.decodeResource(ctx.getResources(), IMUIHelper.getDefaultAvatarResId(msg.sessionType));
-			if (defaultBitmap != null) {
-				builder.setLargeIcon(defaultBitmap);
-			}
-		}
-
-		int notificationId = getSessionNotificationId(sessionId, sessionType);
-
-		Intent intent = new Intent(ctx, MessageActivity.class);
-		IMUIHelper.setSessionInIntent(intent, sessionId, sessionType);
-
-		// if MessageActivity is in the background, the system would bring it to
-		// the front
-		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		PendingIntent pendingIntent = PendingIntent.getActivity(ctx, notificationId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-		builder.setContentIntent(pendingIntent);
-
-		Notification notification = builder.build();
-
-		notifyMgr.notify(notificationId, notification);
+//		Intent intent = new Intent(ctx, MessageActivity.class);
+//		IMUIHelper.setSessionInIntent(intent, sessionId, sessionType);
+//
+//		// if MessageActivity is in the background, the system would bring it to
+//		// the front
+//		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//		PendingIntent pendingIntent = PendingIntent.getActivity(ctx, notificationId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+//
+//		builder.setContentIntent(pendingIntent);
+//
+//		Notification notification = builder.build();
+//
+//		notifyMgr.notify(notificationId, notification);
 	}
 
 	private String getNotificationContent(MessageEntity msg) {
