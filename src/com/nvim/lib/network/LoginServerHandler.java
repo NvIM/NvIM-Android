@@ -13,7 +13,6 @@ public class LoginServerHandler extends BaseServerHandler {
 	@Override
 	public void channelConnected(ChannelHandlerContext ctx, ChannelStateEvent e)
 			throws Exception {
-		// TODO Auto-generated method stub
 		super.channelConnected(ctx, e);
 
 		IMLoginManager.instance().onLoginServerConnected();
@@ -22,7 +21,6 @@ public class LoginServerHandler extends BaseServerHandler {
 	@Override
 	public void channelDisconnected(ChannelHandlerContext ctx,
 			ChannelStateEvent e) throws Exception {
-		// TODO Auto-generated method stub
 		super.channelDisconnected(ctx, e);
 
 		IMLoginManager.instance().onLoginServerDisconnected();
@@ -31,7 +29,6 @@ public class LoginServerHandler extends BaseServerHandler {
 	@Override
 	public void messageReceived(ChannelHandlerContext ctx, MessageEvent e)
 			throws Exception {
-		// TODO Auto-generated method stub
 		super.messageReceived(ctx, e);
 
 		IMPacketDispatcher.dispatch((ChannelBuffer) e.getMessage());
@@ -39,8 +36,6 @@ public class LoginServerHandler extends BaseServerHandler {
 
 	@Override
 	protected void channelUnconnected() {
-		// TODO Auto-generated method stub
-		
     	IMLoginManager.instance().onLoginServerUnconnected();
 
 	}

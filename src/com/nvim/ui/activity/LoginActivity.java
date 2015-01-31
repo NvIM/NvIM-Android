@@ -35,6 +35,7 @@ import com.nvim.log.Logger;
 import com.nvim.ui.base.TTBaseActivity;
 import com.nvim.ui.utils.IMServiceHelper;
 import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
+import com.nvim.utils.NetworkUtil;
 
 public class LoginActivity extends TTBaseActivity implements OnIMServiceListner {
 
@@ -48,7 +49,6 @@ public class LoginActivity extends TTBaseActivity implements OnIMServiceListner 
 
 	private String loginName;
 
-	@SuppressWarnings("unused")
 	private View mLoginFormView;
 
 	private View mLoginStatusView;
@@ -59,8 +59,6 @@ public class LoginActivity extends TTBaseActivity implements OnIMServiceListner 
 
 	private IMLoginManager imLoginMgr;
 
-	public static Context instance = null;
-
 	private LoginIdentity loginIdentity;
 
 	private InputMethodManager intputManager;
@@ -70,30 +68,84 @@ public class LoginActivity extends TTBaseActivity implements OnIMServiceListner 
 	private View loginPage;
 	private View splashPage;
 
-	// public static Handler getUiHandler() {
-	//
-	// return uiHandler;
-	//
-	// }
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		intputManager = (InputMethodManager) getSystemService(LoginActivity.INPUT_METHOD_SERVICE);
+		logger.d("login#onCreate");
+
+		List<String> actions = new ArrayList<String>();
+		actions.add(IMActions.ACTION_LOGIN_RESULT);
+		// if (!imServiceHelper.connect(getApplicationContext(), actions,
+		// IMServiceHelper.INTENT_NO_PRIORITY, this)) {
+		// logger.e("login#fatal,  connect im service failed");
+		// }
+
+		IMEntrance.getInstance().setContext(LoginActivity.this);
+
+		initHandler();
+
+		setContentView(R.layout.tt_activity_login);
+
+		mNameView = (EditText) findViewById(R.id.name);
+		mPasswordView = (EditText) findViewById(R.id.password);
+		mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+			@Override
+			public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+				if (id == R.id.login || id == EditorInfo.IME_NULL) {
+					attemptLogin();
+
+					return true;
+				}
+
+				return false;
+			}
+		});
+
+		mLoginFormView = findViewById(R.id.login_form);
+		mLoginStatusView = findViewById(R.id.login_status);
+
+		findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View view) {
+				intputManager.hideSoftInputFromWindow(mPasswordView.getWindowToken(), 0);
+
+				attemptLogin();
+
+				if (!NetworkUtil.isNetWorkAvalible(LoginActivity.this)) {
+					mPasswordView.setError(getString(R.string.invalid_network));
+					mPasswordView.requestFocus();
+				}
+			}
+		});
+
+		initAutoLogin();
+
+		showLoginPage();
+	}
 
 	private String getLoginErrorTip(int errorCode, int msgServerErrorCode) {
 		switch (errorCode) {
-			case ErrorCode.E_CONNECT_LOGIN_SERVER_FAILED :
-				return getString(R.string.connect_login_server_failed);
-			case ErrorCode.E_REQ_MSG_SERVER_ADDRS_FAILED :
-				return getString(R.string.req_msg_server_addrs_failed);
-			case ErrorCode.E_CONNECT_MSG_SERVER_FAILED :
-				return getString(R.string.connect_msg_server_failed);
-			case ErrorCode.E_LOGIN_MSG_SERVER_FAILED :
-				return getString(R.string.login_msg_server_failed);
-			case ErrorCode.E_LOGIN_GENERAL_FAILED :
-				return getString(R.string.login_error_general_failed);
-			case ErrorCode.E_REQ_LOGIN_SERVER_ADDRS_FAILED :
-				return getString(R.string.login_error_fetch_login_server_addrs_failed);
-			case ErrorCode.E_MSG_SERVER_ERROR_CODE :
-				return String.format("%s %s:%d", getString(R.string.login_msg_server_failed), getString(R.string.error_code_name), msgServerErrorCode);
-			default :
-				return getString(R.string.login_error_unexpected);
+		case ErrorCode.E_CONNECT_LOGIN_SERVER_FAILED:
+			return getString(R.string.connect_login_server_failed);
+		case ErrorCode.E_REQ_MSG_SERVER_ADDRS_FAILED:
+			return getString(R.string.req_msg_server_addrs_failed);
+		case ErrorCode.E_CONNECT_MSG_SERVER_FAILED:
+			return getString(R.string.connect_msg_server_failed);
+		case ErrorCode.E_LOGIN_MSG_SERVER_FAILED:
+			return getString(R.string.login_msg_server_failed);
+		case ErrorCode.E_LOGIN_GENERAL_FAILED:
+			return getString(R.string.login_error_general_failed);
+		case ErrorCode.E_REQ_LOGIN_SERVER_ADDRS_FAILED:
+			return getString(R.string.login_error_fetch_login_server_addrs_failed);
+		case ErrorCode.E_MSG_SERVER_ERROR_CODE:
+			return String.format("%s %s:%d", getString(R.string.login_msg_server_failed),
+					getString(R.string.error_code_name), msgServerErrorCode);
+		default:
+			return getString(R.string.login_error_unexpected);
 
 		}
 	}
@@ -112,9 +164,7 @@ public class LoginActivity extends TTBaseActivity implements OnIMServiceListner 
 	}
 
 	@Override
-	public void onAction(String action, Intent intent,
-			BroadcastReceiver broadcastReceiver) {
-		// TODO Auto-generated method stub
+	public void onAction(String action, Intent intent, BroadcastReceiver broadcastReceiver) {
 
 		logger.d("login#onAction -> action:%s", action);
 
@@ -132,37 +182,35 @@ public class LoginActivity extends TTBaseActivity implements OnIMServiceListner 
 
 	@Override
 	public void onIMServiceConnected() {
-		// TODO Auto-generated method stub
-
 		logger.d("login#onIMServiceConnected");
 		IMService imService = imServiceHelper.getIMService();
 		if (imService == null) {
 			return;
 		}
 
-//		imLoginMgr = imService.getLoginManager();
-//
-//		if (imLoginMgr != null) {
-//			logger.i("chat#connect im service ok");
-//		}
+		// imLoginMgr = imService.getLoginManager();
+		//
+		// if (imLoginMgr != null) {
+		// logger.i("chat#connect im service ok");
+		// }
 
-//		try {
-//			loginIdentity = imService.getDbManager().loadLoginIdentity();
-//			if (loginIdentity == null) {
-//				handleNoLoginIdentity();
-//			} else {
-//				handleGotLoginIdentity();
-//			}
-//		} catch (Exception e) {
-//			logger.w("loadIdentity failed");
-//		}
+		// try {
+		// loginIdentity = imService.getDbManager().loadLoginIdentity();
+		// if (loginIdentity == null) {
+		// handleNoLoginIdentity();
+		// } else {
+		// handleGotLoginIdentity();
+		// }
+		// } catch (Exception e) {
+		// logger.w("loadIdentity failed");
+		// }
 	}
 
 	private void handleNoLoginIdentity() {
 		logger.i("login#handleNoLoginIdentity");
 
 		if (autoLogin) {
-			//no login identity yet, show login page a few seconds delay
+			// no login identity yet, show login page a few seconds delay
 			uiHandler.postDelayed(new Runnable() {
 
 				@Override
@@ -200,85 +248,6 @@ public class LoginActivity extends TTBaseActivity implements OnIMServiceListner 
 		loginPage.setVisibility(View.VISIBLE);
 	}
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-
-		super.onCreate(savedInstanceState);
-		intputManager = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE);
-		logger.d("login#onCreate");
-
-		List<String> actions = new ArrayList<String>();
-		actions.add(IMActions.ACTION_LOGIN_RESULT);
-		if (!imServiceHelper.connect(getApplicationContext(), actions, IMServiceHelper.INTENT_NO_PRIORITY, this)) {
-			logger.e("login#fatal,  connect im service failed");
-		}
-
-		//		 if (true) {
-		//		 CommonTest.test();
-		//		 return;
-		//		 }
-
-		IMEntrance.getInstance().setContext(LoginActivity.this);
-
-		initHandler();
-
-		setContentView(R.layout.tt_activity_login);
-
-		instance = this;
-
-		mNameView = (EditText) findViewById(R.id.name);
-		mPasswordView = (EditText) findViewById(R.id.password);
-		mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-			@Override
-			public boolean onEditorAction(TextView textView, int id,
-
-			KeyEvent keyEvent) {
-
-				if (id == R.id.login || id == EditorInfo.IME_NULL) {
-
-					attemptLogin();
-
-					return true;
-
-				}
-
-				return false;
-
-			}
-
-		});
-
-		mLoginFormView = findViewById(R.id.login_form);
-
-		mLoginStatusView = findViewById(R.id.login_status);
-
-		findViewById(R.id.sign_in_button).setOnClickListener(
-
-		new View.OnClickListener() {
-
-			@Override
-			public void onClick(View view) {
-
-				intputManager.hideSoftInputFromWindow(mPasswordView.getWindowToken(), 0);
-
-				attemptLogin();
-
-				// if (NetworkUtil.isNetWorkAvalible(LoginActivity.this)) {
-				//
-				//
-				//
-				// } else {
-				// mPasswordView.setError(getString(R.string.invalid_network));
-				// mPasswordView.requestFocus();
-				// }
-
-			}
-
-		});
-
-		initAutoLogin();
-	}
 	private void initAutoLogin() {
 		logger.i("login#initAutoLogin");
 		autoLogin = shouldAutoLogin();
@@ -352,9 +321,9 @@ public class LoginActivity extends TTBaseActivity implements OnIMServiceListner 
 
 		String mPassword = mPasswordView.getText().toString();
 
-		//todo eric
-		//loginName = "大佛";
-		//mPassword = "123321";
+		// todo eric
+		// loginName = "大佛";
+		// mPassword = "123321";
 
 		boolean cancel = false;
 
@@ -397,12 +366,6 @@ public class LoginActivity extends TTBaseActivity implements OnIMServiceListner 
 		} else {
 
 			showProgress(true);
-			// mPasswordView.setFocusable(false);
-			// mNameView.setFocusable(false);
-
-			// login(mName, mPassword);
-			// IMEntrance.getInstance().initTask(this, loginNickName,
-			// mPassword);
 			if (imLoginMgr != null) {
 				boolean userNameChanged = true;
 				boolean pwdChanged = true;
@@ -495,19 +458,19 @@ public class LoginActivity extends TTBaseActivity implements OnIMServiceListner 
 	private void onLoginSuccess() {
 		logger.i("login#onLoginSuccess");
 
-//		//		 todo eric remove it
-//		CacheHub.getInstance().setLoginUser(imServiceHelper.getIMService().getLoginManager().getLoginUser());
-//
-//		// todo eric remove this
-//		// Intent i = new Intent();
-//		// i.setAction(SysConstant.START_SERVICE_ACTION);
-//		// LoginActivity.this.sendBroadcast(i);
-//
-//		Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//
-//		startActivity(intent);
-//
-//		LoginActivity.this.finish();
+		// // todo eric remove it
+		// CacheHub.getInstance().setLoginUser(imServiceHelper.getIMService().getLoginManager().getLoginUser());
+		//
+		// // todo eric remove this
+		// // Intent i = new Intent();
+		// // i.setAction(SysConstant.START_SERVICE_ACTION);
+		// // LoginActivity.this.sendBroadcast(i);
+		//
+		// Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+		//
+		// startActivity(intent);
+		//
+		// LoginActivity.this.finish();
 	}
 
 	@Override

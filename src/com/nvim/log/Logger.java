@@ -12,11 +12,9 @@ public class Logger {
 	/**
 	 * log tag
 	 */
-	private String tagName = "MoGuLogger";// tag name
+	private String tagName = "NvIMLogger";
 
-	// private static int logLevel = Log.VERBOSE;
-
-	private static int logLevel = Log.WARN;
+	private static int logLevel = Log.VERBOSE;
 
 	private static Logger inst;
 
@@ -67,6 +65,7 @@ public class Logger {
 				Locale.CHINA).format(new Date());
 		String message = (functionName == null ? msg : (functionName + " - "
 				+ String.valueOf(threadId) + " - " + msg));
+		
 		return currentTime + " - " + message;
 	}
 
