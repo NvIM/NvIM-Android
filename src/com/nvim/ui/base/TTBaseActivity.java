@@ -2,7 +2,6 @@ package com.nvim.ui.base;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -11,49 +10,40 @@ import android.widget.TextView;
 
 import com.nvim.R;
 
-/**
- * @Description
- * @author Nana
- * @date 2014-4-10
- */
 public abstract class TTBaseActivity extends Activity {
 	protected ImageView topLeftBtn;
 	protected ImageView topRightBtn;
 	protected TextView topTitleTxt;
-	protected TextView letTitleTxt;
+	protected TextView leftTitleTxt;
 	protected ViewGroup topBar;
-	protected ViewGroup topContentView;
 	protected float x1, y1, x2, y2 = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// initHandler();
+
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		topContentView = (ViewGroup) LayoutInflater.from(this).inflate(
-				R.layout.tt_activity_base, null);
-		topBar = (ViewGroup) topContentView.findViewById(R.id.topbar);
-		topTitleTxt = (TextView) topContentView
-				.findViewById(R.id.base_activity_title);
-		topLeftBtn = (ImageView) topContentView.findViewById(R.id.left_btn);
-		topRightBtn = (ImageView) topContentView.findViewById(R.id.right_btn);
-		letTitleTxt = (TextView) topContentView.findViewById(R.id.left_txt);
+		this.setContentView(R.layout.tt_activity_base);
+
+		topBar = (ViewGroup) this.findViewById(R.id.topbar);
+		topTitleTxt = (TextView) this.findViewById(R.id.base_activity_title);
+		topLeftBtn = (ImageView) this.findViewById(R.id.left_btn);
+		topRightBtn = (ImageView) this.findViewById(R.id.right_btn);
+		leftTitleTxt = (TextView) this.findViewById(R.id.left_txt);
 
 		topTitleTxt.setVisibility(View.GONE);
 		topRightBtn.setVisibility(View.GONE);
-		letTitleTxt.setVisibility(View.GONE);
+		leftTitleTxt.setVisibility(View.GONE);
 		topLeftBtn.setVisibility(View.GONE);
-
-		setContentView(topContentView);
 	}
 
 	protected void setLeftText(String text) {
 		if (null == text) {
 			return;
 		}
-		letTitleTxt.setText(text);
-		letTitleTxt.setVisibility(View.VISIBLE);
+		leftTitleTxt.setText(text);
+		leftTitleTxt.setVisibility(View.VISIBLE);
 	}
 
 	protected void setTitle(String title) {
@@ -95,9 +85,11 @@ public abstract class TTBaseActivity extends Activity {
 		if (resID <= 0) {
 			return;
 		}
+
 		topBar.setBackgroundResource(resID);
 	}
 
-	protected abstract void initHandler();
+	protected void initHandler() {
 
+	}
 }
