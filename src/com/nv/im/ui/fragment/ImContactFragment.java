@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import android.content.BroadcastReceiver;
@@ -90,7 +91,8 @@ public class ImContactFragment extends ImMainBaseFragment implements OnTouchingL
 		curView = inflater.inflate(R.layout.tt_fragment_contact, topContentView);
 
 		initRes();
-
+//
+//		onContactsReady();
 		return curView;
 	}
 
@@ -412,17 +414,16 @@ public class ImContactFragment extends ImMainBaseFragment implements OnTouchingL
 	private void initRes() {
 		// 设置顶部标题栏
 		showContactTopBar();
-		// if (chooseMode) {
-		// setTopLeftButton(R.drawable.tt_top_back);
-		// setTopLeftText(getActivity().getString(R.string.top_left_back));
-		// topLeftBtn.setOnClickListener(new View.OnClickListener() {
-		// @Override
-		// public void onClick(View view) {
-		// getActivity().finish();
-		// }
-		// });
-		// }
-		//
+//		if (chooseMode) {
+//			setTopLeftButton(R.drawable.tt_top_back);
+//			setTopLeftText(getActivity().getString(R.string.top_left_back));
+//			topLeftBtn.setOnClickListener(new View.OnClickListener() {
+//				@Override
+//				public void onClick(View view) {
+//					getActivity().finish();
+//				}
+//			});
+//		}
 
 		super.init(curView);
 		showProgressBar();
@@ -440,12 +441,6 @@ public class ImContactFragment extends ImMainBaseFragment implements OnTouchingL
 
 		SourceDateList = filledData(getResources().getStringArray(R.array.data));
 		Collections.sort(SourceDateList, sortComparator);
-
-		// logger.d("--------------dump contacts------------------");
-		// for (ContactSortEntity user : SourceDateList) {
-		// logger.d("userName:%s, pinyin:%s", user.getName(),
-		// user.getSortLetters());
-		// }
 
 		contactAdapter = new EntityListViewAdapter(getActivity());
 		departmentAdapter = new EntityListViewAdapter(getActivity());
@@ -479,9 +474,6 @@ public class ImContactFragment extends ImMainBaseFragment implements OnTouchingL
 			public void afterTextChanged(Editable s) {
 			}
 		});
-
-		// todo eric
-		// showLoadingProgressBar(true);
 	}
 
 	/**
@@ -498,17 +490,18 @@ public class ImContactFragment extends ImMainBaseFragment implements OnTouchingL
 			sortModel.setName(data[i]);
 			// 汉字转换成拼音
 			String pinyin = characterParser.getSelling(data[i]);
-			String sortString = pinyin.substring(0, 1).toUpperCase();
+			String sortString = pinyin.substring(0, 1).toLowerCase(Locale.CHINA);
 
 			// 正则表达式，判断首字母是否是英文字母
 			if (sortString.matches("[A-Z]")) {
-				sortModel.setSortLetters(sortString.toUpperCase());
+				sortModel.setSortLetters(sortString.toUpperCase(Locale.CHINA));
 			} else {
 				sortModel.setSortLetters("#");
 			}
 
 			mSortList.add(sortModel);
 		}
+		
 		return mSortList;
 
 	}
