@@ -18,8 +18,6 @@ import com.nvim.log.Logger;
 
 public class SortSideBar extends View {
     private OnTouchingLetterChangedListener onTouchingLetterChangedListener;
-	private Logger logger = Logger.getLogger(SortSideBar.class);
-
 
     public static String[] b = {
             "A", "B", "C", "D", "E", "F", "G", "H", "I",
