@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 
+import com.nv.im.ui.widget.NaviTabButton;
 import com.nvim.R;
-import com.nvim.ui.widget.NaviTabButton;
 
 public class ImMainActivity extends FragmentActivity {
 
@@ -19,7 +19,7 @@ public class ImMainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.activity_im_main);
+		setContentView(R.layout.im_activity_main);
 
 		this.initTab();
 		this.initFragment();

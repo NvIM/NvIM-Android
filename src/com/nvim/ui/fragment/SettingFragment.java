@@ -8,17 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
+import com.nv.im.ui.fragment.ImBaseFragment;
 import com.nvim.R;
 import com.nvim.lib.common.ConfigDefs;
 import com.nvim.lib.service.IMService;
 import com.nvim.lib.utils.CheckboxConfigUtils;
 import com.nvim.lib.utils.IMUIHelper;
 import com.nvim.log.Logger;
-import com.nvim.ui.base.TTBaseFragment;
 import com.nvim.ui.utils.IMServiceHelper;
 import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
 
-public class SettingFragment extends TTBaseFragment
+public class SettingFragment extends ImBaseFragment
 		implements
 			OnIMServiceListner {
 

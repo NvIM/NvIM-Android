@@ -11,6 +11,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.nv.im.ui.fragment.ImBaseFragment;
 import com.nvim.R;
 import com.nvim.lib.IMSession;
 import com.nvim.lib.common.ConfigDefs;
@@ -19,12 +20,11 @@ import com.nvim.lib.utils.CheckboxConfigUtils;
 import com.nvim.lib.utils.IMUIHelper;
 import com.nvim.lib.utils.IMUIHelper.SessionInfo;
 import com.nvim.proto.GroupEntity;
-import com.nvim.ui.base.TTBaseFragment;
 import com.nvim.ui.utils.IMGroupMemberGridViewHelper;
 import com.nvim.ui.utils.IMServiceHelper;
 import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
 
-public class GroupManagerFragment extends TTBaseFragment
+public class GroupManagerFragment extends ImBaseFragment
 		implements
 			OnIMServiceListner {
 	// OnTouchBlankPositionListener, {

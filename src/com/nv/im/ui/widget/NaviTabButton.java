@@ -1,4 +1,4 @@
-package com.nvim.ui.widget;
+package com.nv.im.ui.widget;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -38,6 +38,7 @@ public class NaviTabButton extends FrameLayout {
 
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		inflater.inflate(R.layout.tt_navi_tab_button, this, true);
+
 		container = (RelativeLayout) findViewById(R.id.tab_btn_container);
 
 		mImage = (ImageView) findViewById(R.id.tab_btn_default);

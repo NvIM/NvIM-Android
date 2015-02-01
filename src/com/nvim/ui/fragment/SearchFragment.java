@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.nv.im.ui.fragment.ImBaseFragment;
 import com.nvim.R;
 import com.nvim.adapter.EntityListViewAdapter;
 import com.nvim.config.SysConstant;
@@ -25,12 +26,11 @@ import com.nvim.log.Logger;
 import com.nvim.proto.ContactEntity;
 import com.nvim.proto.DepartmentEntity;
 import com.nvim.proto.GroupEntity;
-import com.nvim.ui.base.TTBaseFragment;
 import com.nvim.ui.utils.EntityList;
 import com.nvim.ui.utils.IMServiceHelper;
 import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
 
-public class SearchFragment extends TTBaseFragment
+public class SearchFragment extends ImBaseFragment
 		implements
 			OnIMServiceListner {
 

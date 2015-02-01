@@ -6,11 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.nv.im.ui.fragment.ImBaseFragment;
 import com.nvim.R;
 import com.nvim.config.SysConstant;
-import com.nvim.ui.base.TTBaseFragment;
 
-public class InternalFragment extends TTBaseFragment {
+public class InternalFragment extends ImBaseFragment {
 	private View curView = null;
 	private View ttOpenSourceView = null;
 

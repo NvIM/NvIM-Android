@@ -39,25 +39,25 @@
         android:gravity="center"
         android:orientation="horizontal" >
 
-        <com.nvim.ui.widget.NaviTabButton
+        <com.nv.im.ui.widget.NaviTabButton
             android:id="@+id/tabbutton_chat"
             android:layout_width="0dip"
             android:layout_height="fill_parent"
             android:layout_weight="1" />
 
-        <com.nvim.ui.widget.NaviTabButton
+        <com.nv.im.ui.widget.NaviTabButton
             android:id="@+id/tabbutton_contact"
             android:layout_width="0dip"
             android:layout_height="fill_parent"
             android:layout_weight="1" />
 
-        <com.nvim.ui.widget.NaviTabButton
+        <com.nv.im.ui.widget.NaviTabButton
             android:id="@+id/tabbutton_internal"
             android:layout_width="0dip"
             android:layout_height="fill_parent"
             android:layout_weight="1" />
 
-        <com.nvim.ui.widget.NaviTabButton
+        <com.nv.im.ui.widget.NaviTabButton
             android:id="@+id/tabbutton_my"
             android:layout_width="0dip"
             android:layout_height="fill_parent"

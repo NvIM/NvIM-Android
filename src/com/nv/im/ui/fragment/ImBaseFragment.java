@@ -1,6 +1,5 @@
-package com.nvim.ui.base;
+package com.nv.im.ui.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,12 +12,11 @@ import android.widget.TextView;
 import com.nvim.R;
 import com.nvim.lib.IMActions;
 import com.nvim.lib.service.IMService;
-import com.nvim.lib.utils.IMUIHelper;
 import com.nvim.log.Logger;
 import com.nvim.ui.widget.SearchEditText;
 import com.nvim.ui.widget.TopTabButton;
 
-public abstract class TTBaseFragment extends Fragment {
+public abstract class ImBaseFragment extends Fragment {
 	protected ImageView topLeftBtn;
 	protected ImageView topRightBtn;
 	protected TextView topTitleTxt;
@@ -31,13 +29,13 @@ public abstract class TTBaseFragment extends Fragment {
 	protected ViewGroup topContentView;
 	protected LinearLayout topLeftContainerLayout;
 	protected float x1, y1, x2, y2 = 0;
-	protected static Logger logger = Logger.getLogger(TTBaseFragment.class);
+	protected static Logger logger = Logger.getLogger(ImBaseFragment.class);
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		topContentView = (ViewGroup) LayoutInflater.from(getActivity()).inflate(R.layout.tt_fragment_base, null);
+		topContentView = (ViewGroup) LayoutInflater.from(getActivity()).inflate(R.layout.im_fragment_base, null);
 
 		topBar = (ViewGroup) topContentView.findViewById(R.id.topbar);
 		topTitleTxt = (TextView) topContentView.findViewById(R.id.base_fragment_title);
