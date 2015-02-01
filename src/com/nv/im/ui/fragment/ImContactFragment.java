@@ -49,7 +49,7 @@ import com.nvim.utils.SortComparator;
 public class ImContactFragment extends ImMainBaseFragment implements OnTouchingLetterChangedListener,
 		OnIMServiceListner {
 	private View curView = null;
-	private Handler uiHandler = null;
+	private static Handler uiHandler = null;
 	private ListView allContactListView;
 	private ListView departmentContactListView;
 	private SortSideBar sortSideBar;
@@ -91,8 +91,12 @@ public class ImContactFragment extends ImMainBaseFragment implements OnTouchingL
 		curView = inflater.inflate(R.layout.tt_fragment_contact, topContentView);
 
 		initRes();
-//
-//		onContactsReady();
+
+		onContactsReady();
+		
+		allContactListView.setVisibility(View.VISIBLE);
+		departmentContactListView.setVisibility(View.GONE);
+		
 		return curView;
 	}
 
@@ -183,7 +187,7 @@ public class ImContactFragment extends ImMainBaseFragment implements OnTouchingL
 		isContactDataAlreadyReady = true;
 
 		contactTabOnContactsReady();
-		departmentTabOnContactsReady();
+//		departmentTabOnContactsReady();
 	}
 
 	private void departmentTabOnContactsReady() {
@@ -522,7 +526,7 @@ public class ImContactFragment extends ImMainBaseFragment implements OnTouchingL
 		}
 	}
 
-	public Handler getHandler() {
+	public static Handler getHandler() {
 		return uiHandler;
 	}
 

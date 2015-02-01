@@ -2,13 +2,17 @@
 package com.nvim.ui.widget;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.nv.im.ui.fragment.ImContactFragment;
 import com.nvim.R;
+import com.nvim.config.HandlerConstant;
 
 public class TopTabButton extends FrameLayout {
     private Context context = null;
@@ -65,20 +69,20 @@ public class TopTabButton extends FrameLayout {
 
         // tabALLBtn.setText(context.getString(R.string.contact_all));
         // tabALLBtn.setBackgroundResource(R.drawable.contact_top_left_sel);
-//        tabALLBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Handler handler = ImContactFragment.getHandler();
-//                Message message = handler.obtainMessage();
-//                message.what=HandlerConstant.HANDLER_CHANGE_CONTACT_TAB;
-//                message.obj = 0;
-//                handler.sendMessage(message);
-//
-//                setSelTextColor(0);
-//                tabALLBtn.setBackgroundResource(R.drawable.tt_contact_top_left_sel);
-//                tabDepartmentBtn.setBackgroundResource(R.drawable.tt_contact_top_right_nor);
-//            }
-//        });
+        tabALLBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Handler handler = ImContactFragment.getHandler();
+                Message message = handler.obtainMessage();
+                message.what=HandlerConstant.HANDLER_CHANGE_CONTACT_TAB;
+                message.obj = 0;
+                handler.sendMessage(message);
+
+                setSelTextColor(0);
+                tabALLBtn.setBackgroundResource(R.drawable.tt_contact_top_left_sel);
+                tabDepartmentBtn.setBackgroundResource(R.drawable.tt_contact_top_right_nor);
+            }
+        });
 
     }
 
