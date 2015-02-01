@@ -28,6 +28,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nv.im.ui.fragment.ImMainBaseFragment;
 import com.nv.im.ui.widget.SearchEditText;
 import com.nv.im.ui.widget.SortSideBar;
 import com.nv.im.ui.widget.SortSideBar.OnTouchingLetterChangedListener;
@@ -50,7 +51,7 @@ import com.nvim.ui.utils.IMServiceHelper;
 import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
 import com.nvim.utils.ContactUtils;
 
-public class GroupMemberSelectFragment extends MainFragment implements OnIMServiceListner,
+public class GroupMemberSelectFragment extends ImMainBaseFragment implements OnIMServiceListner,
 		OnTouchingLetterChangedListener {
 	@Override
 	public void onDestroyView() {

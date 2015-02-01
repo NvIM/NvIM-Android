@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nv.im.ui.fragment.ImMainBaseFragment;
 import com.nvim.R;
 import com.nvim.config.SysConstant;
 import com.nvim.entity.User;
@@ -24,7 +25,7 @@ import com.nvim.proto.DepartmentEntity;
 import com.nvim.ui.utils.IMServiceHelper;
 import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
 
-public class UserInfoFragment extends MainFragment implements OnIMServiceListner {
+public class UserInfoFragment extends ImMainBaseFragment implements OnIMServiceListner {
 
 	private View curView = null;
 	private User user = null;

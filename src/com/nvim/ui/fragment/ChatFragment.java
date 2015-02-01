@@ -20,6 +20,7 @@ import android.widget.ProgressBar;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
+import com.nv.im.ui.fragment.ImMainBaseFragment;
 import com.nvim.R;
 import com.nvim.adapter.ChatAdapter;
 import com.nvim.config.SysConstant;
@@ -39,7 +40,7 @@ import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
  * @author Nana
  * @date 2014-7-24
  */
-public class ChatFragment extends MainFragment
+public class ChatFragment extends ImMainBaseFragment
         implements
         OnItemSelectedListener,
         OnItemClickListener,

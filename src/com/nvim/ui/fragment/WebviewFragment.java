@@ -8,10 +8,11 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.nv.im.ui.fragment.ImMainBaseFragment;
 import com.nvim.R;
 
 @SuppressLint("SetJavaScriptEnabled")
-public class WebviewFragment extends MainFragment {
+public class WebviewFragment extends ImMainBaseFragment {
 	private View curView = null;
 	private static String url;
 

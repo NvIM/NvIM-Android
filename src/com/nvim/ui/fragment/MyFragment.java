@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.nv.im.ui.fragment.ImMainBaseFragment;
 import com.nvim.R;
 import com.nvim.lib.IMActions;
 import com.nvim.lib.IMSession;
@@ -22,7 +23,7 @@ import com.nvim.proto.ContactEntity;
 import com.nvim.ui.utils.IMServiceHelper;
 import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
 
-public class MyFragment extends MainFragment implements OnIMServiceListner {
+public class MyFragment extends ImMainBaseFragment implements OnIMServiceListner {
 	private View curView = null;
 	private IMServiceHelper imServiceHelper = new IMServiceHelper();
 	private View contentView;

@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
+import com.nv.im.ui.fragment.ImMainBaseFragment;
 import com.nv.im.ui.widget.SearchEditText;
 import com.nv.im.ui.widget.SortSideBar;
 import com.nv.im.ui.widget.SortSideBar.OnTouchingLetterChangedListener;
@@ -46,7 +47,7 @@ import com.nvim.utils.CharacterParser;
 import com.nvim.utils.ContactUtils;
 import com.nvim.utils.SortComparator;
 
-public class ContactFragment extends MainFragment
+public class ContactFragment extends ImMainBaseFragment
 		implements
 			OnTouchingLetterChangedListener,
 			OnIMServiceListner {

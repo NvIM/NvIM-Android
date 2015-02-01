@@ -1,12 +1,11 @@
-package com.nvim.ui.fragment;
+package com.nv.im.ui.fragment;
 
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.nv.im.ui.fragment.ImBaseFragment;
 import com.nvim.R;
 
-public abstract class MainFragment extends ImBaseFragment {
+public abstract class ImMainBaseFragment extends ImBaseFragment {
 	private ProgressBar progressbar;
 
 	public void init(View curView) {
