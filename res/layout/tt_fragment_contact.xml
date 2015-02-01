@@ -11,7 +11,7 @@
         android:focusableInTouchMode="true"
         android:orientation="vertical" >
 
-        <com.nvim.ui.widget.SearchEditText
+        <com.nv.im.ui.widget.SearchEditText
             android:id="@+id/filter_edit"
             android:layout_width="fill_parent"
             android:layout_height="30dp"
@@ -65,7 +65,7 @@
                 android:textSize="30dp"
                 android:visibility="invisible" />
 
-            <com.nvim.ui.widget.SortSideBar
+            <com.nv.im.ui.widget.SortSideBar
                 android:id="@+id/sidrbar"
                 android:layout_width="30dp"
                 android:layout_height="fill_parent"

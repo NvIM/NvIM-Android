@@ -28,6 +28,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nv.im.ui.widget.SearchEditText;
+import com.nv.im.ui.widget.SortSideBar;
+import com.nv.im.ui.widget.SortSideBar.OnTouchingLetterChangedListener;
 import com.nvim.R;
 import com.nvim.adapter.EntityListViewAdapter;
 import com.nvim.adapter.EntityListViewAdapter.ViewHolder;
@@ -45,9 +48,6 @@ import com.nvim.ui.utils.EntityList;
 import com.nvim.ui.utils.IMGroupMemberGridViewHelper;
 import com.nvim.ui.utils.IMServiceHelper;
 import com.nvim.ui.utils.IMServiceHelper.OnIMServiceListner;
-import com.nvim.ui.widget.SearchEditText;
-import com.nvim.ui.widget.SortSideBar;
-import com.nvim.ui.widget.SortSideBar.OnTouchingLetterChangedListener;
 import com.nvim.utils.ContactUtils;
 
 public class GroupMemberSelectFragment extends MainFragment implements OnIMServiceListner,

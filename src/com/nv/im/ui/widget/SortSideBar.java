@@ -1,5 +1,5 @@
 
-package com.nvim.ui.widget;
+package com.nv.im.ui.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;

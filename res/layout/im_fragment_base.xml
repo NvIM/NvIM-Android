@@ -61,7 +61,7 @@
                 android:layout_gravity="center"
                 android:clickable="true" />
 
-            <com.nvim.ui.widget.SearchEditText
+            <com.nv.im.ui.widget.SearchEditText
                 android:id="@+id/chat_title_search"
                 android:layout_width="fill_parent"
                 android:layout_height="35dp"

@@ -9,11 +9,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.nv.im.ui.widget.SearchEditText;
 import com.nvim.R;
 import com.nvim.lib.IMActions;
 import com.nvim.lib.service.IMService;
 import com.nvim.log.Logger;
-import com.nvim.ui.widget.SearchEditText;
 import com.nvim.ui.widget.TopTabButton;
 
 public abstract class ImBaseFragment extends Fragment {
