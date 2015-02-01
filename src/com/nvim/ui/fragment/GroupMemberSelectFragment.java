@@ -467,12 +467,6 @@ public class GroupMemberSelectFragment extends ImMainBaseFragment implements OnI
 	}
 
 	@Override
-	protected void initHandler() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void onTouchingLetterChanged(String s) {
 		// TODO Auto-generated method stub
 		int position = contactAdapter.getPositionForSection(s.charAt(0));

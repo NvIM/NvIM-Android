@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        class="com.nvim.ui.fragment.ContactFragment" />
+        class="com.nv.im.ui.fragment.ImContactFragment" />
 
      <fragment
         android:id="@+id/fragment_internal"

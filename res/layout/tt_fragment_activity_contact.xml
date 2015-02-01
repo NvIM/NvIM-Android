@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/contactFragment"
-        android:name="com.nvim.ui.fragment.ContactFragment"
+        android:name="com.nv.im.ui.fragment.ImContactFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

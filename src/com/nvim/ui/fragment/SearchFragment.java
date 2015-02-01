@@ -270,10 +270,6 @@ public class SearchFragment extends ImBaseFragment
 	}
 
 	@Override
-	protected void initHandler() {
-	}
-
-	@Override
 	public void onAction(String action, Intent intent,
 			BroadcastReceiver broadcastReceiver) {
 		// TODO Auto-generated method stub

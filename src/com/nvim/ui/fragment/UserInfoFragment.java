@@ -87,10 +87,6 @@ public class UserInfoFragment extends ImMainBaseFragment implements OnIMServiceL
 	}
 
 	@Override
-	protected void initHandler() {
-	}
-
-	@Override
 	public void onAction(String action, Intent intent, BroadcastReceiver broadcastReceiver) {
 		logger.d("detail#onAction action:%s", action);
 	}

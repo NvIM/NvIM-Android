@@ -142,8 +142,6 @@ public abstract class ImBaseFragment extends Fragment {
 		topSearchEdt.setVisibility(View.GONE);
 	}
 
-	protected abstract void initHandler();
-
 	@Override
 	public void onActivityCreated(Bundle bundle) {
 		logger.d("Fragment onActivityCreate:" + getClass().getName());

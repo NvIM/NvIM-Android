@@ -48,8 +48,4 @@ public class InternalFragment extends ImBaseFragment {
 	public void onDestroy() {
 		super.onDestroy();
 	}
-
-	@Override
-	protected void initHandler() {
-	}
 }

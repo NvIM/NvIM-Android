@@ -99,11 +99,6 @@ public class MyFragment extends ImMainBaseFragment implements OnIMServiceListner
 	}
 
 	@Override
-	protected void initHandler() {
-
-	}
-
-	@Override
 	public void onAction(String action, Intent intent, BroadcastReceiver broadcastReceiver) {
 		logger.d("detail#onAction action:%s", action);
 

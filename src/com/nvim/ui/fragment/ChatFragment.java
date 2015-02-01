@@ -334,12 +334,6 @@ public class ChatFragment extends ImMainBaseFragment
         return true;
     }
 
-    @Override
-    protected void initHandler() {
-        // TODO Auto-generated method stub
-
-    }
-
     /**
      * 滑动到指定联系人条目
      * 

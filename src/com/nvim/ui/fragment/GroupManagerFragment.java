@@ -138,10 +138,6 @@ public class GroupManagerFragment extends ImBaseFragment
 		super.onActivityCreated(savedInstanceState);
 	}
 
-	@Override
-	protected void initHandler() {
-	}
-
 	// @Override
 	// public boolean onTouchBlankPosition() {
 	// adapter.setRemoveState(false);

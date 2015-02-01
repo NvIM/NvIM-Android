@@ -75,10 +75,6 @@ public class WebviewFragment extends ImMainBaseFragment {
         super.onDestroy();
     }
 
-    @Override
-    protected void initHandler() {
-    }
-    
 	/**
 	 * @param url the url to set
 	 */
