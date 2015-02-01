@@ -14,8 +14,6 @@ import com.nvim.R;
 import com.nvim.log.Logger;
 
 public class NaviTabButton extends FrameLayout {
-	private int mIndex;
-
 	private ImageView mImage;
 	private TextView mTitle;
 	private TextView mNotify;
@@ -23,9 +21,9 @@ public class NaviTabButton extends FrameLayout {
 	private Drawable mSelectedImg;
 	private Drawable mUnselectedImg;
 
-	private Context mContext;
-
 	private Logger logger = Logger.getLogger(NaviTabButton.class);
+
+	private RelativeLayout container;
 
 	public NaviTabButton(Context context) {
 		this(context, null);
@@ -38,33 +36,18 @@ public class NaviTabButton extends FrameLayout {
 	public NaviTabButton(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 
-		this.mContext = context;
-
-		View.OnClickListener clickListner = new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-//			    if (mIndex==0) {
-//			        ((MainActivity) mContext).btnChatClick();
-//                }else{
-//                    ((MainActivity) mContext).setFragmentIndicator(mIndex);
-//                }
-			}
-		};
-
-		LayoutInflater inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		inflater.inflate(R.layout.tt_navi_tab_button, this, true);
-		RelativeLayout container = (RelativeLayout) findViewById(R.id.tab_btn_container);
+		container = (RelativeLayout) findViewById(R.id.tab_btn_container);
 
 		mImage = (ImageView) findViewById(R.id.tab_btn_default);
 		mTitle = (TextView) findViewById(R.id.tab_btn_title);
 		mNotify = (TextView) findViewById(R.id.tab_unread_notify);
-
-		container.setOnClickListener(clickListner);
 	}
 
-	public void setIndex(int index) {
-		this.mIndex = index;
+	@Override
+	public void setOnClickListener(OnClickListener l) {
+		this.container.setOnClickListener(l);
 	}
 
 	public void setUnselectedImage(Drawable img) {
@@ -77,11 +60,9 @@ public class NaviTabButton extends FrameLayout {
 
 	private void setSelectedColor(Boolean selected) {
 		if (selected) {
-			mTitle.setTextColor(getResources().getColor(
-					R.color.default_blue_color));
+			mTitle.setTextColor(getResources().getColor(R.color.default_blue_color));
 		} else {
-			mTitle.setTextColor(getResources().getColor(
-					R.color.default_light_grey_color));
+			mTitle.setTextColor(getResources().getColor(R.color.default_light_grey_color));
 		}
 	}
 
